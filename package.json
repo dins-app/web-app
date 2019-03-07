@@ -28,9 +28,12 @@
     "@types/styled-components": "^4.1.12",
     "@types/styled-jsx": "^2.2.8",
     "@zeit/next-typescript": "^1.1.1",
+    "axios": "^0.18.0",
     "isomorphic-unfetch": "^3.0.0",
     "next": "^8.0.3",
     "next-offline": "^3.3.6",
+    "pbjs-twirp": "0.0.1",
+    "protobufjs": "^6.8.8",
     "react": "^16.8.4",
     "react-dom": "^16.8.4",
     "styled-components": "^4.1.3"
