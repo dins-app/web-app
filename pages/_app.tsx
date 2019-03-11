@@ -1,9 +1,10 @@
-import App, { Container } from "next/app";
+import App from "next/app";
 import Head from "next/head";
 import styled, { createGlobalStyle } from "styled-components";
 import Nav from "../components/Nav";
 import { title } from "./_document";
 import Provider from "../components/Context";
+import Container from "../components/Container";
 
 // Any global CSS variables and selectors we want
 const GlobalStyle = createGlobalStyle`
@@ -11,17 +12,11 @@ const GlobalStyle = createGlobalStyle`
     --padding: 2rem;
     --max-width: 50rem;
   }
-  body {
-    background: var(--background--1);
+  body, html {
+    height: 100%;
     font-family: 'PT Sans', sans-serif;
     margin: 0;
   }
-`;
-
-const Main = styled.main`
-  margin: 0 auto;
-  max-width: var(--max-width);
-  padding: var(--padding);
 `;
 
 export default class MyApp extends App {
@@ -52,9 +47,9 @@ export default class MyApp extends App {
         <Provider>
             <Container>
               <Nav />
-              <Main>
+              <Container padding="0 5vw">
                 <Component {...pageProps} router={router} />
-              </Main>
+              </Container>
               <GlobalStyle />
             </Container>
         </Provider>

@@ -7,7 +7,7 @@ interface Props {
   posts: any;
 }
 
-class Index extends React.Component<Props> {
+export default class extends React.Component<Props> {
   static async getInitialProps() {
     const fetchPosts = await fetch(
       "https://jsonplaceholder.typicode.com/posts"
@@ -72,5 +72,3 @@ class Index extends React.Component<Props> {
     );
   }
 }
-
-export default Index;
