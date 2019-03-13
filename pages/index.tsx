@@ -4,6 +4,7 @@ import { Consumer, Input, Text, Poster, Logo, Container, Card, Heading, ImageLoa
 
 interface Props {
   posts: any;
+  imgLoaded: any;
 }
 
 export default class extends React.Component<Props> {
@@ -16,19 +17,32 @@ export default class extends React.Component<Props> {
     //   posts
     // };
   }
-  imgLoaded = (e: any) => {
-    e.target.classList.add('loaded');
+
+  setPosterLoader() {
+    const win: any = window;
+    const img: any = window.document.getElementById("poster");
+    const newImg = new win.Image();
+    newImg.onload = () => {
+      img.classList.add('loaded');
+    };
+    newImg.src = img.src;
   }
+
+  componentDidMount() {
+    this.setPosterLoader();
+  }
+
   render() {
+
     return (
       <Consumer>
         {(context: any) => {
           return (
             <Container>
-              <ImageLoader color="#7DC9EC">
+              <ImageLoader style={{backgroundColor:"#7DC9EC"}}>
               <Poster
-                src="static/img/poster1.jpg"
-                onLoad={(e: any)=> e.target.classList.add('loaded')}
+                id="poster"
+                src="static/img/poster1.jpg" 
               />
               </ImageLoader>
               <Logo
