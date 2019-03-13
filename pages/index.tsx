@@ -27,12 +27,12 @@ export default class extends React.Component<Props> {
             <Container>
               <ImageLoader color="#7DC9EC">
               <Poster
-                src="static/img/bitmap_2.png"
+                src="static/img/poster1.jpg"
                 onLoad={(e: any)=> e.target.classList.add('loaded')}
               />
               </ImageLoader>
               <Logo
-                src="static/img/bitmap_2@3x.png"
+                src="static/img/logo.png"
               />
               <Card>
                 <Heading>Coming Soon!</Heading>
