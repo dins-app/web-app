@@ -125,6 +125,7 @@ export default class MyDocument extends Document<Props> {
             media="(device-width: 320px) and (device-height: 568px) and (-webkit-device-pixel-ratio: 2)"
             rel="apple-touch-startup-image"
           />
+          <link rel="shortcut icon" href="static/img/favicon.ico" type="image/x-icon"/>
         </Head>
         <body>
           <Main />
