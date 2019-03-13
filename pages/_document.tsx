@@ -34,7 +34,7 @@ export default class MyDocument extends Document<Props> {
           <meta name="viewport" content="width=device-width, initial-scale=1" />
 
           {/* Progressive Web App: Have address bar match brand colors */}
-          <meta name="theme-color" content="#f4f4f4" />
+          <meta name="theme-color" content="#7DC9EC" />
 
           {/* Progressive Web App: Provide manifest file for metadata */}
           <link rel="manifest" href="./static/manifest.json" />
