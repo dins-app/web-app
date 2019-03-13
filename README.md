@@ -1,2 +1,2 @@
-# lasagna-web
-Web client for lasagna
+# web-app
+Web client for dins.app
