@@ -42,8 +42,9 @@ export default class extends React.Component<Props> {
               <ImageLoader style={{backgroundColor:"#7DC9EC"}}>
               <Poster
                 id="poster"
-                src="static/img/poster1.jpg" 
+                src="static/img/poster1.webp" 
                 alt="poster"
+                onError={(e: any) => e.target.src='static/img/poster1.jpg'}
               />
               </ImageLoader>
               <Logo
