@@ -1,6 +1,6 @@
 // import fetch from "isomorphic-unfetch";
 import React from "react";
-import { Consumer, Input, Text, Poster, Logo, Container, Card, Heading } from "../components";
+import { Consumer, Input, Text, Poster, Logo, Container, Card, Heading, ImageLoader } from "../components";
 
 interface Props {
   posts: any;
@@ -16,15 +16,21 @@ export default class extends React.Component<Props> {
     //   posts
     // };
   }
+  imgLoaded = (e: any) => {
+    e.target.classList.add('loaded');
+  }
   render() {
     return (
       <Consumer>
         {(context: any) => {
           return (
             <Container>
+              <ImageLoader color="#7DC9EC">
               <Poster
                 src="static/img/bitmap_2.png"
+                onLoad={(e: any)=> e.target.classList.add('loaded')}
               />
+              </ImageLoader>
               <Logo
                 src="static/img/bitmap_2@3x.png"
               />
