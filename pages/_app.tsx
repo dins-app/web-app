@@ -16,6 +16,9 @@ const GlobalStyle = createGlobalStyle`
     margin: 0;
     overflow-x: hidden;
   }
+  .loaded {
+    opacity: 1!important;
+  }
 `;
 
 export default class MyApp extends App {

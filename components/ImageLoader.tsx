@@ -9,7 +9,4 @@ export default styled.div`
       opacity: 0;
       transition: opacity 0.6s ease;
   }
-  &.loaded img {
-      opacity: 1;
-  }
 `;
