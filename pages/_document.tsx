@@ -1,10 +1,10 @@
 import Document, { Head, Main, NextScript } from "next/document";
 import { ServerStyleSheet } from "styled-components";
 
-export const title = "Lasagna";
+export const title = "Dins";
 const description =
-  "Lasagna helps you find the ideal recipe based on your preferences and budget.";
-const url = `https://lasagna.now.sh`;
+  "Dins helps you find the ideal recipes based on your budget and skill level.";
+const url = `https://dins.app`;
 const thumbnail = `${url}/static/graphics/thumbnail.png`;
 
 interface Props {
