@@ -10,7 +10,11 @@ export default styled.img<Props>`
   top: 0;
   left: 0;
   width: 100vw;
-  height: 110vh;
-  object-fit: cover;
+  height: 120vh;
+  object-fit: stretch;
   z-index: -100;
+
+  @media (max-width: 768px) {
+    object-fit: cover;
+  }
 `;
