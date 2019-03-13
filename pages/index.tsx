@@ -43,10 +43,12 @@ export default class extends React.Component<Props> {
               <Poster
                 id="poster"
                 src="static/img/poster1.jpg" 
+                alt="poster"
               />
               </ImageLoader>
               <Logo
                 src="static/img/logo.png"
+                alt="logo"
               />
               <Card>
                 <Heading>Coming Soon!</Heading>
