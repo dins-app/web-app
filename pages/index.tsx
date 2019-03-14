@@ -50,7 +50,7 @@ export default class extends React.Component<Props> {
                 src="static/img/logo.png"
                 alt="logo"
               />
-              <Card>
+              <Card width="700px" height="70vh" margin="0 3vw">
                 <Heading>Coming Soon!</Heading>
               </Card>
               {/* <Input
