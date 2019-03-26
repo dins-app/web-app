@@ -28,7 +28,7 @@ const nextConfig = {
     ]
   },
   env: {
-    BACKEND_URL: prod ? "https://myapp.herokuapp.com" : "http://localhost:8000"
+    // BACKEND_URL: prod ? "https://myapp.herokuapp.com" : "http://localhost:8000"
   }
 };
 
@@ -37,7 +37,7 @@ module.exports = withPlugins(
     [
       optimizedImages,
       {
-        optimizeImagesInDev: true,  // uncomment for testing what images look like in production
+        // optimizeImagesInDev: true,  // uncomment for testing what images look like in production
         webp: {
           quality: 98
         }

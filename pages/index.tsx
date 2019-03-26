@@ -1,7 +1,6 @@
-// import fetch from "isomorphic-unfetch";
 import React from "react";
 import { Context } from "../components";
-import { css, styled, Grid, Box, Image, Heading, Button } from "reakit";
+import { styled, Grid, Box, Image, Heading } from "reakit";
 import { RouterProps } from "next/router";
 
 // Props types
