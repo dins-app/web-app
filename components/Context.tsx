@@ -2,15 +2,13 @@ import React from "react";
 
 const INITIAL_STATE = {};
 
-const Context = React.createContext(INITIAL_STATE);
+export const Context = React.createContext(INITIAL_STATE);
 
 export default class Provider extends React.Component {
   state = INITIAL_STATE;
 
   actions = {
-    updateState: (name: any, value: any) => {
-      this.setState({ [name]: value });
-    }
+    setState: this.setState
   };
 
   render() {
@@ -27,4 +25,4 @@ export default class Provider extends React.Component {
   }
 }
 
-export const Consumer = Context.Consumer;
+// export const Consumer = Context.Consumer;

@@ -57,4 +57,4 @@ export default styled.button<Props>`
   ${ props => (props.disabled && "disabled")}
   ${ props => (props.margin && `margin: ${props.margin};`) || "margin: 8px;"}
   ${ props => (props.padding && `padding: ${props.padding};`) || "padding: 8px;"}
-`
+`;

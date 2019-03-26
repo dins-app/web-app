@@ -1,23 +1,21 @@
-import App from "next/app";
 import Head from "next/head";
 import { createGlobalStyle } from "styled-components";
 import { title } from "./_document";
-import Provider from "../components/Context";
+import { ContextProvider } from "../components";
+import { Provider as ThemeProvider } from "reakit";
+import defaultTheme from "reakit-theme-default";
+import App, { NextAppContext, DefaultAppIProps } from "next/app";
 
-// Any global CSS variables and selectors we want
+// Global CSS Styles
 const GlobalStyle = createGlobalStyle`
   :root {
-   --padding: 2rem;
-   --max-width: 50rem;
+   --posterBgColor: #7DC9EC;
   }
   body, html {
     height: 100%;
-    font-family: 'PT Sans', sans-serif;
     margin: 0;
-    overflow-x: hidden;
-  }
-  .loaded {
-    opacity: 1!important;
+    font-family: 'Montserrat', sans-serif;
+    -webkit-font-smoothing: antialiased;
   }
 `;
 
@@ -25,10 +23,7 @@ export default class MyApp extends App {
   static async getInitialProps({
     Component,
     ctx
-  }: {
-    Component: any;
-    ctx: any;
-  }): Promise<any> {
+  }: NextAppContext): Promise<DefaultAppIProps> {
     let pageProps = {};
 
     if (Component.getInitialProps) {
@@ -46,10 +41,12 @@ export default class MyApp extends App {
         <Head>
           <title>{title}</title>
         </Head>
-        <Provider>
-          <Component {...pageProps} router={router} />
+        <ContextProvider>
+          <ThemeProvider theme={defaultTheme}>
+            <Component {...pageProps} router={router} />
+          </ThemeProvider>
           <GlobalStyle />
-        </Provider>
+        </ContextProvider>
       </>
     );
   }
