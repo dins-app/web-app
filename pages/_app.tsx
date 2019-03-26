@@ -14,7 +14,7 @@ const GlobalStyle = createGlobalStyle`
   body, html {
     height: 100%;
     margin: 0;
-    font-family: 'Montserrat', sans-serif;
+    font-family: 'Nunito', sans-serif;
     -webkit-font-smoothing: antialiased;
   }
 `;

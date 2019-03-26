@@ -128,7 +128,8 @@ export default class MyDocument extends Document<Props> {
           <link rel="shortcut icon" href="static/img/favicon.ico" type="image/x-icon"/>
 
           {/* FONTS */}
-          <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet"></link>
+          {/* <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet"></link> */}
+          <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet"></link>
 
           {/* Apple PWA fix */}
           <script dangerouslySetInnerHTML={{ __html: `
