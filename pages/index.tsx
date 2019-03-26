@@ -1,71 +1,124 @@
 // import fetch from "isomorphic-unfetch";
 import React from "react";
-import { Consumer, Input, Text, Poster, Logo, Container, Card, Heading, ImageLoader } from "../components";
+import { Context } from "../components";
+import { css, styled, Grid, Box, Image, Heading, Button } from "reakit";
+import { RouterProps } from "next/router";
 
-interface Props {
-  posts: any;
-  imgLoaded: any;
+// Props types
+interface IProps {
+  router: RouterProps;
 }
 
-export default class extends React.Component<Props> {
-  static async getInitialProps() {
-    // const fetchPosts = await fetch(
-    //   "https://jsonplaceholder.typicode.com/posts"
-    // );
-    // const posts = await fetchPosts.json();
-    // return {
-    //   posts
-    // };
+// State types
+interface IState {
+  message?: string;
+}
+
+export default class extends React.Component<IProps, IState> {
+  constructor(props: IProps) {
+    super(props);
+    const initialState = {};
+    this.state = initialState;
   }
 
-  setPosterLoader() {
-    const win: any = window;
-    const img: any = window.document.getElementById("poster");
-    const newImg = new win.Image();
-    newImg.onload = () => {
-      img.classList.add('loaded');
-    };
-    newImg.src = img.src;
-  }
+  // needed for access to this.context
+  static contextType = Context;
 
-  componentDidMount() {
-    this.setPosterLoader();
+  async componentDidMount() {
+    this.setState({ message: "Coming Soon!" });
   }
 
   render() {
-
     return (
-      <Consumer>
-        {(context: any) => {
-          return (
-            <Container>
-              <ImageLoader style={{backgroundColor:"#7DC9EC"}}>
-              <Poster
-                id="poster"
-                src="static/img/poster1.jpg" 
-                alt="poster"
-              />
-              </ImageLoader>
-              <Logo
-                src="static/img/logo.png"
-                alt="logo"
-              />
-              <Card>
-                <Heading>Coming Soon!</Heading>
-              </Card>
-              {/* <Input
-                margin="40vh 40vw"
-                name="name"
-                onChange={e =>
-                  context.updateState(e.target.name, e.target.value)
-                }
-                autoComplete="off"
-              />
-              <Text>{context.name}</Text> */}
-            </Container>
-          );
-        }}
-      </Consumer>
+      <Grid>
+        {/* Poster Container */}
+        <Box
+          absolute
+          backgroundColor="var(--posterBgColor)"
+          height="120vh"
+          width="calc(100vw - (100vw - 100%))"
+          zIndex={-90}
+        >
+          {/* Poster */}
+          <Poster>
+            <source
+              srcSet={require("../static/img/poster.jpg?webp")}
+              type="image/webp"
+            />
+            <source
+              srcSet={require("../static/img/poster.jpg")}
+              type="image/jpeg"
+            />
+            <Image
+              src={require("../static/img/poster.jpg")}
+              alt="poster"
+              width="100%"
+              height="120vh"
+              objectFit="stretch"
+            />
+          </Poster>
+        </Box>
+        {/* Logo */}
+        <Logo>
+          <source
+            srcSet={require("../static/img/logo.png?webp")}
+            type="image/webp"
+          />
+          <source
+            srcSet={require("../static/img/logo.png")}
+            type="image/jpeg"
+          />
+          <Image
+            src={require("../static/img/logo.png")}
+            alt="logo"
+            width={180}
+            margin="30px 0 70px 30px"
+          />
+        </Logo>
+        {/* Card */}
+        <Card
+          backgroundColor="#fff"
+          boxShadow="0 1px 1px 0 rgba(0, 0, 0, 0.5)"
+          borderRadius={26}
+          margin="0 3vw"
+          width={700}
+          height="70vh"
+        >
+          <Heading
+            alignSelf="center"
+            textAlign="center"
+            fontWeight={500}
+            fontSize={60}
+          >
+            {this.state.message}
+          </Heading>
+        </Card>
+      </Grid>
     );
   }
 }
+
+// Styled Components and Media Queries
+const Card = styled(Grid)`
+  @media (max-width: 768px) {
+    width: 92vw !important;
+    justify-self: center;
+  }
+`;
+
+const Logo = styled.picture`
+  @media (max-width: 768px) {
+    justify-self: center;
+    img {
+      margin: 30px 0 !important;
+    }
+  }
+`;
+
+const Poster = styled.picture`
+  @media (max-width: 1024px) {
+    img {
+      object-fit: cover !important;
+    }
+  }
+`;

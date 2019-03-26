@@ -126,8 +126,24 @@ export default class MyDocument extends Document<Props> {
             rel="apple-touch-startup-image"
           />
           <link rel="shortcut icon" href="static/img/favicon.ico" type="image/x-icon"/>
+
+          {/* FONTS */}
+          <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet"></link>
+
+          {/* Apple PWA fix */}
+          <script dangerouslySetInnerHTML={{ __html: `
+            if (!!navigator.platform && /iP(?:hone|ad|od)/.test(navigator.platform)) {
+              document.querySelector("link[rel='manifest']").setAttribute("rel", "no-ios");
+              document.title = "Learnit"; // default app name | simulate short_name
+              if ("standalone" in window.navigator && window.navigator.standalone && sessionStorage.getItem("iOS-redirect") === null) {
+                sessionStorage.setItem("iOS-redirect", "");
+                window.location = "/"; // simulate start_url
+              }
+            }
+          `}} />
         </Head>
-        <body>
+        <body onTouchStart={() => {return true}}>
+          <noscript>You need to enable JavaScript to run this app.</noscript>
           <Main />
           <NextScript />
         </body>

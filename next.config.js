@@ -1,10 +1,9 @@
-// Progressive Web App: Add service worker with network-first strategy.
-// Network-first strategy means that if there is no internet connection,
-// the browser will use files previously saved locally to the user’s device instead.
-// AKA Offline Mode!
+const withPlugins = require("next-compose-plugins");
 const withOffline = require("next-offline");
-const withTypescript = require('@zeit/next-typescript');
-const prod = process.env.NODE_ENV === 'production';
+const withTypescript = require("@zeit/next-typescript");
+const optimizedImages = require("next-optimized-images");
+
+const prod = process.env.NODE_ENV === "production";
 
 const nextConfig = {
   target: "serverless",
@@ -29,12 +28,23 @@ const nextConfig = {
     ]
   },
   env: {
-    BACKEND_URL: prod ? 'https://myapp.herokuapp.com' : 'http://localhost:8000',
-    PHOTO_API_URL: 'https://avatarmate.herokuapp.com/api/v1/avatars',
-    PHOTO_API_KEY: 'apikey'
-    // we can use now secrets for api keys and sensitive info we don't want to expose client side
-    // variables here are compiled into app at build time
+    BACKEND_URL: prod ? "https://myapp.herokuapp.com" : "http://localhost:8000"
   }
 };
 
-module.exports = withTypescript(withOffline(nextConfig));
+module.exports = withPlugins(
+  [
+    [
+      optimizedImages,
+      {
+        optimizeImagesInDev: true,  // uncomment for testing what images look like in production
+        webp: {
+          quality: 98
+        }
+      }
+    ],
+    [withTypescript, {}],
+    [withOffline, {}]
+  ],
+  nextConfig
+);
