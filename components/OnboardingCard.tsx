@@ -42,46 +42,62 @@ export default (props: IProps) => {
         >
           Find recipes for your budget and skill level.
         </Heading>
-        <Label fontSize={24} color="#4a4a4a" fontWeight={600} gridArea="b">
+        <Label fontSize={24} color="#4a4a4a" fontWeight={600} gridArea="d">
           BUDGET
           <Select
             use="select"
             onChange={(e: any) => setState({ budget: e.target.value })}
-            value={state.budget}
           >
-            <option value="tester">Test</option>
-            <option value="">Budget</option>
+            <option value="" disabled selected hidden>Budget</option>
+            <option value="">Any budget</option>
+            <option value="low">Low</option>
+            <option value="medium">Medium</option>
+            <option value="high">High</option>
           </Select>
         </Label>
-        <Label fontSize={24} color="#4a4a4a" fontWeight={600} gridArea="c">
+        <Label fontSize={24} color="#4a4a4a" fontWeight={600} gridArea="e">
           SKILL
           <Select
             use="select"
             onChange={(e: any) => setState({ skill: e.target.value })}
-            value={state.skill}
           >
-            <option value="">Skill level</option>
+            <option value="" disabled selected hidden>Skill level</option>
+            <option value="">Any skill level</option>
+            <option value="easy">Easy</option>
+            <option value="mid">Mid</option>
+            <option value="hard">Hard</option>
           </Select>
         </Label>
-
-        <Label fontSize={24} color="#4a4a4a" fontWeight={600} gridArea="d">
-          MAX COOK TIME
-          <Select
-            use="select"
-            onChange={(e: any) => setState({ time: e.target.value })}
-            value={state.time}
-          >
-            <option value="">hh:mm</option>
-          </Select>
-        </Label>
-        <Label fontSize={24} color="#4a4a4a" fontWeight={600} gridArea="e">
+        <Label fontSize={24} color="#4a4a4a" fontWeight={600} gridArea="b">
           MEAL
           <Select
             use="select"
             onChange={(e: any) => setState({ meal: e.target.value })}
-            value={state.meal}
           >
-            <option value="">Meal type</option>
+            <option value="" disabled selected hidden>Meal type</option>
+            <option value="">Any meal type</option>
+            <option value="breakfast">Breakfast</option>
+            <option value="lunch">Lunch</option>
+            <option value="dinner">Dinner</option>
+            <option value="snack">Snack</option>
+            <option value="dessert">Dessert</option>
+            <option value="drink">Drink</option>
+          </Select>
+        </Label>
+        <Label fontSize={24} color="#4a4a4a" fontWeight={600} gridArea="c">
+          TIME
+          <Select
+            use="select"
+            onChange={(e: any) => setState({ time: e.target.value })}
+          >
+            <option value="" disabled selected hidden>Max cook time</option>
+            <option value="0.5">0.5 hours</option>
+            <option value="1">1 hour</option>
+            <option value="1.5">1.5 hours</option>
+            <option value="2">2 hours</option>
+            <option value="2.5">2.5 hours</option>
+            <option value="3">3 hours</option>
+            <option value="">more than 3 hours</option>
           </Select>
         </Label>
         <Link
@@ -102,9 +118,15 @@ export default (props: IProps) => {
               <Select
                 use="select"
                 onChange={(e: any) => setState({ cuisine: e.target.value })}
-                value={state.cuisine}
               >
-                <option value="">Type of food</option>
+                <option value="" disabled selected hidden>Type of food</option>
+                <option value="">Any type of food</option>
+                <option value="chinese">Chinese</option>
+                <option value="indian">Indian</option>
+                <option value="italian">Italian</option>
+                <option value="mexican">Mexican</option>
+                <option value="american">American</option>
+                <option value="thai">Thai</option>
               </Select>
             </Label>
             <Label fontSize={24} color="#4a4a4a" fontWeight={600} gridArea="g">
@@ -114,21 +136,28 @@ export default (props: IProps) => {
                 onChange={(e: any) =>
                   setState({ restrictions: e.target.value })
                 }
-                value={state.restrictions}
               >
-                <option value="">Dietary needs</option>
+                <option value="" disabled selected hidden>Dietary needs</option>
+                <option value="">No restrictions</option>
+                <option value="vegetarian">Vegetarian</option>
+                <option value="vegan">Vegan</option>
+                <option value="low_carb">Low carb</option>
+                <option value="low_fat">Low fat</option>
+                <option value="dairy_free">Dairy free</option>
+                <option value="gluten_free">Gluten free</option>
               </Select>
             </Label>
           </>
         )}
         <Button
           width={204}
-          height={58}
+          height={68}
           borderRadius={12}
           backgroundColor="#295e70"
           fontSize={28}
           gridArea="i"
           justifySelf="end"
+          onClick={() => console.log(state)}
         >
           Search
         </Button>
@@ -163,7 +192,7 @@ const Card = styled(Grid)<CardProps>`
 `;
 const Select = styled(Input)`
   color: #a4a4a4;
-  fontWeight: 500;
+  font-weight: 500;
   font-size: 34px
   border-radius: 12px;
   border: 1px solid #dcdcdc;

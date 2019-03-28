@@ -24,7 +24,6 @@ export default class extends React.Component<IProps, IState> {
   constructor(props: IProps) {
     super(props);
     const initialState = {
-      budget: "tester",
       showAdditional: false
     };
     this.state = initialState;
@@ -101,11 +100,11 @@ export default class extends React.Component<IProps, IState> {
             <Image
               src={require("../static/img/logo.png")}
               alt="logo"
-              width={180}
+              width={200}
             />
           </picture>
           {/* Login Link */}
-          <Link color="#fff" fontSize={20} fontWeight={600} cursor="pointer" gridArea="b" justifySelf="end">
+          <Link color="#fff" fontSize={24} fontWeight={600} cursor="pointer" gridArea="b" justifySelf="end">
             Login
           </Link>
         </Grid>

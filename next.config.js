@@ -37,7 +37,7 @@ module.exports = withPlugins(
     [
       optimizedImages,
       {
-        optimizeImagesInDev: true,  // uncomment for testing what images look like in production
+     // optimizeImagesInDev: true,  // uncomment for testing what images look like in production
         webp: {
           quality: 98
         }

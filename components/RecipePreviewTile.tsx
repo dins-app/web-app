@@ -43,6 +43,7 @@ const Picture = styled.picture`
 `;
 const DifficultyFab = styled.div<IDifficultyFabProps>`
   position: absolute;
+  z-index: 1;
   right: 0;
   width: 83px;
   height: 83px;
@@ -62,6 +63,7 @@ const DifficultyFab = styled.div<IDifficultyFabProps>`
 `;
 const Title = styled.div`
   position: absolute;
+  background-color: rgba(0, 0, 0, 0.2);
   top: 0;
   left: 0;
   width: 100%;
