@@ -22,8 +22,6 @@ export default (props: IProps) => (
       <Image
         src={props.hasOwnProperty("images") && props.images.jpg || ""}
         alt={props.name.toLowerCase()}
-        // width={520}
-        // height={714}
         objectFit="contain"
       />
     </Picture>

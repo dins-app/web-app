@@ -24,7 +24,8 @@ export default class extends React.Component<IProps, IState> {
   constructor(props: IProps) {
     super(props);
     const initialState = {
-      budget: "tester"
+      budget: "tester",
+      showAdditional: false
     };
     this.state = initialState;
   }
@@ -32,7 +33,18 @@ export default class extends React.Component<IProps, IState> {
   // needed for access to this.context
   static contextType = Context;
 
-  async componentDidMount() {}
+  loadPoster() {
+    const img = window.document.querySelector('.poster > img');
+    const newImg = new window.Image();
+    newImg.src = img.src;
+    newImg.onload = () => {
+      img.classList.add("poster_loaded");
+    }
+  }
+
+  async componentDidMount() {
+    this.loadPoster();
+  }
 
   render() {
     return (
@@ -58,7 +70,6 @@ export default class extends React.Component<IProps, IState> {
               srcSet={require("../static/img/poster.jpg")}
               type="image/jpeg"
             />
-            Input
             <Image
               absolute
               src={require("../static/img/poster.jpg")}
@@ -78,7 +89,7 @@ export default class extends React.Component<IProps, IState> {
           className="logo_grid"
         >
           {/* Logo */}
-          <picture className="logo" gridArea="a">
+          <picture className="logo" style={{gridArea: "a"}}>
             <source
               srcSet={require("../static/img/logo.png?webp")}
               type="image/webp"
@@ -117,9 +128,7 @@ export default class extends React.Component<IProps, IState> {
         {/* Section 4 - Recipe Preview Tiles */}
         <Grid
           templateColumns="repeat(auto-fit, minmax(400px, 1fr))"
-          // margin="100px 64px 100px 94px"
-          // overflowX="auto"
-          // justifyItems="center"
+          className="recipe_preview_grid"
         >
           <RecipePreviewTile
             name="Tuscan Kale Chips"
@@ -152,7 +161,7 @@ export default class extends React.Component<IProps, IState> {
 }
 
 // Styled Components, Media Queries, and Animations
-const FadeIn = keyframes`
+const SlideIn = keyframes`
   from {
     transform: translate3d(0,-120vh,0);
     opacity: 0;
@@ -164,9 +173,24 @@ const FadeIn = keyframes`
     opacity: 1;
   }
 `;
+const FadeIn = keyframes`
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+`;
 const PageGrid = styled(Grid)<IState>`
-  perspective: 2000px;
-  animation: ${FadeIn} 1s ease-in-out;
+  animation: ${SlideIn} 1s ease-in-out;
+  .poster > img {
+    opacity: 0;
+  }
+  .poster_loaded {
+    animation: ${FadeIn} 2s ease-in-out;
+    opacity: 1!important;
+  }
   .poster_box {
     ${props => props.showAdditional && `height: 1260px!important;`}
   }
@@ -200,6 +224,12 @@ const PageGrid = styled(Grid)<IState>`
     .cta_text {
       font-size: 40px !important;
       text-align: center;
+    }
+    .recipe_preview_grid {
+      grid-template-columns: unset !important;
+      h2 {
+        font-size: 30px !important;
+      }
     }
   }
 `;
