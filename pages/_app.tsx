@@ -41,7 +41,7 @@ export default class MyApp extends App {
         <Head>
           <title>{title}</title>
         </Head>
-        <ContextProvider>
+        <ContextProvider initialState={{title: title}}>
           <ThemeProvider theme={defaultTheme}>
             <Component {...pageProps} router={router} />
           </ThemeProvider>

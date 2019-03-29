@@ -1,28 +1,32 @@
-import React from "react";
+import React, { useState } from "react";
+import * as actions from "../actions";
 
-const INITIAL_STATE = {};
-
-export const Context = React.createContext(INITIAL_STATE);
-
-export default class Provider extends React.Component {
-  state = INITIAL_STATE;
-
-  actions = {
-    setState: this.setState
-  };
-
-  render() {
-    return (
-      <Context.Provider
-        value={{
-          ...this.state,
-          ...this.actions
-        }}
-      >
-        {this.props.children}
-      </Context.Provider>
-    );
-  }
+interface IContext {
+  state?: any;
+  setState?: any;
+  sayHello?: any;
 }
 
-// export const Consumer = Context.Consumer;
+export const Context = React.createContext<IContext | null>(null);
+
+export const ContextProvider = ({ initialState, children }) => {
+  const [state, setState] = useState(initialState);
+
+  const providerActions = {
+    setState: (values: Object) =>
+      setState(prevState => {
+        return { ...prevState, ...values };
+      }),
+      ...actions
+  };
+  return (
+    <Context.Provider
+      value={{
+        state: { ...state },
+        ...providerActions
+      }}
+    >
+      {children}
+    </Context.Provider>
+  );
+};
