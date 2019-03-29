@@ -35,8 +35,8 @@ export default class extends React.Component<IProps, IState> {
   interface
 
   loadPoster() {
-    const img = window.document.querySelector(".poster > img");
-    const newImg = new (window as any).Image(); // just to make typescript happy
+    const img: any = window.document.querySelector(".poster > img");
+    const newImg: any = new (window as any).Image(); // just to make typescript happy
     newImg.src = img.src;
     newImg.onload = () => {
       img.classList.add("poster_loaded");
