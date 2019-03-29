@@ -33,12 +33,12 @@ export default class extends React.Component<IProps, IState> {
   static contextType = Context;
 
   loadPoster() {
-    const img = window.document.querySelector('.poster > img');
+    const img = window.document.querySelector(".poster > img");
     const newImg = new window.Image();
     newImg.src = img.src;
     newImg.onload = () => {
       img.classList.add("poster_loaded");
-    }
+    };
   }
 
   async componentDidMount() {
@@ -47,7 +47,11 @@ export default class extends React.Component<IProps, IState> {
 
   render() {
     return (
-      <PageGrid padding={40} gap={60} showAdditional={this.state.showAdditional}>
+      <PageGrid
+        padding={40}
+        gap={60}
+        showAdditional={this.state.showAdditional}
+      >
         {/* Poster Container */}
         <Box
           absolute
@@ -82,13 +86,9 @@ export default class extends React.Component<IProps, IState> {
           </picture>
         </Box>
         {/* Section 1 - Logo and Login Link */}
-        <Grid
-          template={`"a b"`}
-          gap={10}
-          className="logo_grid"
-        >
+        <Grid template={`"a b"`} gap={10} className="logo_grid">
           {/* Logo */}
-          <picture className="logo" style={{gridArea: "a"}}>
+          <picture className="logo" style={{ gridArea: "a" }}>
             <source
               srcSet={require("../static/img/logo.png?webp")}
               type="image/webp"
@@ -104,14 +104,23 @@ export default class extends React.Component<IProps, IState> {
             />
           </picture>
           {/* Login Link */}
-          <Link color="#fff" fontSize={24} fontWeight={600} cursor="pointer" gridArea="b" justifySelf="end">
+          <Link
+            color="#fff"
+            fontSize={24}
+            fontWeight={600}
+            cursor="pointer"
+            gridArea="b"
+            justifySelf="end"
+          >
             Login
           </Link>
         </Grid>
         {/* Section 2 - Card */}
         <OnboardingCard
           state={this.state}
-          setState={(obj: Object, callback?: any) => this.setState(obj, callback)}
+          setState={(obj: Object, callback?: any) =>
+            this.setState(obj, callback)
+          }
         />
         {/* Section 3 - Call To Action */}
         <Heading
@@ -197,11 +206,11 @@ const PageGrid = styled(Grid)<IState>`
     opacity: 0;
   }
   .poster_loaded {
-    animation: ${FadeIn} .6s ease-in-out;
-    opacity: 1!important;
+    animation: ${FadeIn} 0.6s ease-in-out;
+    opacity: 1 !important;
   }
   .expanded {
-    animation: ${PopIn} 0.4s ease-in-out; 
+    animation: ${PopIn} 0.4s ease-in-out;
   }
   .poster_box {
     ${props => props.showAdditional && `height: 1260px!important;`}
@@ -222,7 +231,8 @@ const PageGrid = styled(Grid)<IState>`
       }
     }
     .poster_box {
-      height: ${props => props.showAdditional && `1760px` || `1480px`} !important;
+      height: ${props =>
+        (props.showAdditional && `1760px`) || `1480px`} !important;
     }
   }
   @media (max-width: 425px) {
@@ -231,7 +241,8 @@ const PageGrid = styled(Grid)<IState>`
       margin: 10px !important;
     }
     .poster_box {
-      height: ${props => props.showAdditional && `1760px` || `1480px`} !important;
+      height: ${props =>
+        (props.showAdditional && `1760px`) || `1480px`} !important;
     }
     .cta_text {
       font-size: 40px !important;
