@@ -1,4 +1,5 @@
 import {
+  keyframes,
   styled,
   Grid,
   Heading,
@@ -15,20 +16,54 @@ interface IProps {
 
 export default (props: IProps) => {
   const { state, setState } = props;
+
+  const showAdditionalClicked = () => {
+    const el = document.getElementById("onboarding_card");
+    let curHeight = el.scrollHeight;
+    el.style.height = curHeight + 'px';
+    
+    if (state.showAdditional === false) {
+      document.querySelectorAll('.optional_fader').forEach((el: any) => {
+        el.classList.add("expanded")
+      });
+      setState({originalHeight: curHeight});
+      setState({showAdditional: true}, () => {
+        const targetHeight = el.scrollHeight;
+        const animation = setInterval(() => {
+          el.style.height = curHeight + 'px';
+          curHeight += 5;
+          if (curHeight >= targetHeight) {
+            el.style.height = null;
+            clearInterval(animation);
+          }
+        }, 1)
+      })
+    } else {
+      document.querySelectorAll('.optional_fader').forEach((el: any) => {
+        el.classList.remove("expanded")
+      });
+      setState({showAdditional: false}, () => {
+        el.style.height = null;
+      })
+    }
+  };
+
   return (
     <Card
       backgroundColor="#fff"
       boxShadow="0 1px 1px 0 rgba(0, 0, 0, 0.5)"
       borderRadius={26}
-      width={800}
+      maxWidth={800}
       height="min-content"
       showAdditional={state.showAdditional}
+      id="onboarding_card"
     >
       <Grid
         template={
           (state.showAdditional && `"a a" "b c" "d e" "f g" "h h" "i i"`) ||
           `"a a" "b c" "d e" "h h" "i i"`
         }
+        templateColumns="1fr 1fr"
         gap={40}
         margin={40}
       >
@@ -106,14 +141,14 @@ export default (props: IProps) => {
           fontWeight={600}
           gridArea="h"
           cursor="pointer"
-          onClick={() => {state.showAdditional === false ? setState({showAdditional: true}) : setState({showAdditional: false})}
-          }
+          onClick={showAdditionalClicked}
+          className="optional_fader"
         >
           {state.showAdditional && `-` || `+`} ADDITIONAL OPTIONS
         </Link>
         {state.showAdditional && (
           <>
-            <Label fontSize={24} color="#4a4a4a" fontWeight={600} gridArea="f">
+            <Label fontSize={24} color="#4a4a4a" fontWeight={600} gridArea="f" className="poster_loader">
               CUISINE
               <Select
                 use="select"
@@ -129,7 +164,7 @@ export default (props: IProps) => {
                 <option value="thai">Thai</option>
               </Select>
             </Label>
-            <Label fontSize={24} color="#4a4a4a" fontWeight={600} gridArea="g">
+            <Label fontSize={24} color="#4a4a4a" fontWeight={600} gridArea="g" className="poster_loader">
               RESTRICTIONS
               <Select
                 use="select"
@@ -158,6 +193,7 @@ export default (props: IProps) => {
           gridArea="i"
           justifySelf="end"
           onClick={() => console.log(state)}
+          className="optional_fader"
         >
           Search
         </Button>
@@ -172,8 +208,8 @@ interface CardProps {
 
 // Styled Components and Media Queries
 const Card = styled(Grid)<CardProps>`
+  overflow: hidden;
   @media (max-width: 768px) {
-    width: unset !important;
     div {
       grid-template: ${props =>
         (props.showAdditional && `"a" "b" "c" "d" "e" "f" "g" "h" "i"`) ||

@@ -111,7 +111,7 @@ export default class extends React.Component<IProps, IState> {
         {/* Section 2 - Card */}
         <OnboardingCard
           state={this.state}
-          setState={(obj: Object) => this.setState(obj)}
+          setState={(obj: Object, callback?: any) => this.setState(obj, callback)}
         />
         {/* Section 3 - Call To Action */}
         <Heading
@@ -120,7 +120,7 @@ export default class extends React.Component<IProps, IState> {
           color="#042347"
           margin={0}
           marginTop={260}
-          className="cta_text"
+          className="cta_text optional_fader"
         >
           Check out some of our most popular recipes
         </Heading>
@@ -181,14 +181,27 @@ const FadeIn = keyframes`
     opacity: 1;
   }
 `;
+const PopIn = keyframes`
+  from {
+    opacity: 0;
+  }
+
+  to {
+
+    opacity: 1;
+  }
+`;
 const PageGrid = styled(Grid)<IState>`
   animation: ${SlideIn} 1s ease-in-out;
   .poster > img {
     opacity: 0;
   }
   .poster_loaded {
-    animation: ${FadeIn} 2s ease-in-out;
+    animation: ${FadeIn} .6s ease-in-out;
     opacity: 1!important;
+  }
+  .expanded {
+    animation: ${PopIn} 0.4s ease-in-out; 
   }
   .poster_box {
     ${props => props.showAdditional && `height: 1260px!important;`}
