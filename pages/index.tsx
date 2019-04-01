@@ -1,8 +1,9 @@
 import React from "react";
 import { Context, RecipePreviewTile, OnboardingCard } from "../components";
-import { styled, Grid, Image, Heading, Link, Box } from "reakit";
+import { styled, Grid, Image, Heading, Link, Box, Button } from "reakit";
 import { keyframes } from "styled-components";
 import { RouterProps } from "next/router";
+import RouterLink from "next/link";
 
 // Props types
 interface IProps {
@@ -32,7 +33,7 @@ export default class extends React.Component<IProps, IState> {
   // needed for access to this.context
   static contextType = Context;
 
-  interface
+  interface;
 
   loadPoster() {
     const img: any = window.document.querySelector(".poster > img");
@@ -142,6 +143,8 @@ export default class extends React.Component<IProps, IState> {
         >
           <RecipePreviewTile
             name="Tuscan Kale Chips"
+            time="1"
+            price="8"
             difficulty="easy"
             images={{
               webp: require("../static/img/kale.jpg?webp"),
@@ -150,6 +153,8 @@ export default class extends React.Component<IProps, IState> {
           />
           <RecipePreviewTile
             name="Spicy Pork Noodles"
+            time="2"
+            price="6"
             difficulty="mid"
             images={{
               webp: require("../static/img/spaghetti.jpg?webp"),
@@ -158,6 +163,8 @@ export default class extends React.Component<IProps, IState> {
           />
           <RecipePreviewTile
             name="Meatballs &amp; Brocolli"
+            time="2.5"
+            price="8"
             difficulty="hard"
             images={{
               webp: require("../static/img/meatballs.jpg?webp"),
@@ -165,6 +172,19 @@ export default class extends React.Component<IProps, IState> {
             }}
           />
         </Grid>
+        {/* Section 5 - Link to Recipes Page */}
+        <RouterLink prefetch href="/recipes">
+          <Link
+            fontSize={28}
+            marginBottom={70}
+            cursor="pointer"
+            justifySelf="center"
+            color="#266ab8"
+            fontWeight={500}
+          >
+            See More...
+          </Link>
+        </RouterLink>
       </PageGrid>
     );
   }
