@@ -1,9 +1,10 @@
-import withPlugin from 'next-compose-plugins';
-import withOffline from 'next-offline';
-import withTypescript from '@zeit/next-typescript';
-import optimizedImages from 'next-optimized-images';
+/* eslint-disable @typescript-eslint/no-var-requires */
+const withPlugins = require('next-compose-plugins');
+const withOffline = require('next-offline');
+const withTypescript = require('@zeit/next-typescript');
+const optimizedImages = require('next-optimized-images');
 
-const prod = process.env.NODE_ENV === 'production';
+// const prod = process.env.NODE_ENV === 'production';
 
 const nextConfig = {
   target: 'serverless',
