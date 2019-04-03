@@ -1,46 +1,45 @@
-import { styled, Image, Grid, Heading } from "reakit";
+import { styled, Image, Grid, Heading } from 'reakit';
+import { NextStatelessComponent } from 'next';
+import React from 'react';
 
-type Difficulty = "easy" | "mid" | "hard";
+type Difficulty = 'easy' | 'mid' | 'hard';
 
-interface IDifficultyFabProps {
-  difficulty: Difficulty
+interface DifficultyFabProps {
+  difficulty: Difficulty;
 }
 
-interface IProps extends IDifficultyFabProps {
-  name: string
-  images: any
-  time: string | number
-  price: string | number
+interface Props extends DifficultyFabProps {
+  name: string;
+  images: any;
+  time: string | number;
+  price: string | number;
 }
 
-export default (props: IProps) => (
+const RecipePreviewTile: NextStatelessComponent<Props> = (props: Props): any => (
   <Tile>
     <Picture>
-      <source
-        srcSet={props.hasOwnProperty("images") && props.images.webp || ""}
-        type="image/webp"
-      />
-      <source srcSet={props.hasOwnProperty("images") && props.images.jpg || ""} type="image/jpeg" />
+      <source srcSet={(props.hasOwnProperty('images') && props.images.webp) || ''} type="image/webp" />
+      <source srcSet={(props.hasOwnProperty('images') && props.images.jpg) || ''} type="image/jpeg" />
       <Image
-        src={props.hasOwnProperty("images") && props.images.jpg || ""}
+        src={(props.hasOwnProperty('images') && props.images.jpg) || ''}
         alt={props.name.toLowerCase()}
         objectFit="contain"
       />
     </Picture>
     <DifficultyFab difficulty={props.difficulty}>{props.difficulty.toUpperCase()}</DifficultyFab>
-    <Heading
-      use="h3"
-      color="#727272"
-      fontSize={22}
-    >COOK TIME: {isNaN(Number(props.time)) && `n/a` || (Number(props.time) == 1 && `${props.time} HOUR` || `${props.time} HOURS`)}{props.price && ` \u00B7 $${props.price}/PERSON`}</Heading>
-    <Heading
-      use="h2"
-      color="#4a4a4a"
-      marginTop={0}
-      fontSize={40}
-    >{props.name}</Heading>
+    <Heading use="h3" color="#727272" fontSize={22}>
+      COOK TIME:{' '}
+      {(isNaN(Number(props.time)) && `n/a`) ||
+        ((Number(props.time) == 1 && `${props.time} HOUR`) || `${props.time} HOURS`)}
+      {props.price && ` \u00B7 $${props.price}/PERSON`}
+    </Heading>
+    <Heading use="h2" color="#4a4a4a" marginTop={0} fontSize={40}>
+      {props.name}
+    </Heading>
   </Tile>
 );
+
+export default RecipePreviewTile;
 
 // Styled Components and Media Queries
 const Tile = styled(Grid)`
@@ -53,7 +52,7 @@ const Picture = styled.picture`
     width: 100%;
   }
 `;
-const DifficultyFab = styled.div<IDifficultyFabProps>`
+const DifficultyFab = styled.div<DifficultyFabProps>`
   position: absolute;
   z-index: 1;
   right: 0;
@@ -69,9 +68,9 @@ const DifficultyFab = styled.div<IDifficultyFabProps>`
   margin-right: -41px;
   ${props =>
     props.difficulty &&
-    ((props.difficulty === "easy" && `background-color: #a9bfc6;`) ||
-      (props.difficulty === "mid" && `background-color: #698e9a;`) ||
-      (props.difficulty === "hard" && `background-color: #295e70;`))}
+    ((props.difficulty === 'easy' && `background-color: #a9bfc6;`) ||
+      (props.difficulty === 'mid' && `background-color: #698e9a;`) ||
+      (props.difficulty === 'hard' && `background-color: #295e70;`))}
 `;
 // const Title = styled.div`
 //   position: absolute;

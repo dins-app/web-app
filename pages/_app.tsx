@@ -1,10 +1,11 @@
-import Head from "next/head";
-import { createGlobalStyle } from "styled-components";
-import { title } from "./_document";
-import { ContextProvider } from "../components";
-import { Provider as ThemeProvider } from "reakit";
-import defaultTheme from "reakit-theme-default";
-import App, { NextAppContext, DefaultAppIProps } from "next/app";
+import Head from 'next/head';
+import { createGlobalStyle } from 'styled-components';
+import { title } from './_document';
+import { ContextProvider } from '../components';
+import { Provider as ThemeProvider } from 'reakit';
+import defaultTheme from 'reakit-theme-default';
+import App, { NextAppContext, DefaultAppIProps } from 'next/app';
+import React from 'react';
 
 // Global CSS Styles
 const GlobalStyle = createGlobalStyle`
@@ -20,10 +21,7 @@ const GlobalStyle = createGlobalStyle`
 `;
 
 export default class MyApp extends App {
-  static async getInitialProps({
-    Component,
-    ctx
-  }: NextAppContext): Promise<DefaultAppIProps> {
+  public static async getInitialProps({ Component, ctx }: NextAppContext): Promise<DefaultAppIProps> {
     let pageProps = {};
 
     if (Component.getInitialProps) {
@@ -33,7 +31,7 @@ export default class MyApp extends App {
     return { pageProps };
   }
 
-  render() {
+  public render(): any {
     const { Component, pageProps, router } = this.props;
 
     return (
@@ -41,7 +39,7 @@ export default class MyApp extends App {
         <Head>
           <title>{title}</title>
         </Head>
-        <ContextProvider initialState={{title: title}}>
+        <ContextProvider initialState={{ title: title }}>
           <ThemeProvider theme={defaultTheme}>
             <Component {...pageProps} router={router} />
           </ThemeProvider>

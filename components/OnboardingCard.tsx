@@ -1,50 +1,52 @@
-import {
-  keyframes,
-  styled,
-  Grid,
-  Heading,
-  Label,
-  Input,
-  Button,
-  Link
-} from "reakit";
+import { styled, Grid, Heading, Label, Input, Button, Link } from 'reakit';
+import React from 'react';
 
-interface IProps {
+interface Props {
   state: any;
   setState: any;
 }
 
-export default (props: IProps) => {
+export default (props: Props): any => {
   const { state, setState } = props;
 
-  const showAdditionalClicked = () => {
-    const el = document.getElementById("onboarding_card");
+  const showAdditionalClicked = (): any => {
+    const el = document.getElementById('onboarding_card');
     let curHeight = el.scrollHeight;
     el.style.height = curHeight + 'px';
-    
+
     if (state.showAdditional === false) {
-      document.querySelectorAll('.optional_fader').forEach((el: any) => {
-        el.classList.add("expanded")
-      });
-      setState({originalHeight: curHeight});
-      setState({showAdditional: true}, () => {
-        const targetHeight = el.scrollHeight;
-        const animation = setInterval(() => {
-          el.style.height = curHeight + 'px';
-          curHeight += 5;
-          if (curHeight >= targetHeight) {
-            el.style.height = null;
-            clearInterval(animation);
-          }
-        }, 1)
-      })
+      document.querySelectorAll('.optional_fader').forEach(
+        (el: any): any => {
+          el.classList.add('expanded');
+        },
+      );
+      setState({ originalHeight: curHeight });
+      setState(
+        { showAdditional: true },
+        (): any => {
+          const targetHeight = el.scrollHeight;
+          const animation = setInterval((): any => {
+            el.style.height = curHeight + 'px';
+            curHeight += 5;
+            if (curHeight >= targetHeight) {
+              el.style.height = null;
+              clearInterval(animation);
+            }
+          }, 1);
+        },
+      );
     } else {
-      document.querySelectorAll('.optional_fader').forEach((el: any) => {
-        el.classList.remove("expanded")
-      });
-      setState({showAdditional: false}, () => {
-        el.style.height = null;
-      })
+      document.querySelectorAll('.optional_fader').forEach(
+        (el: any): any => {
+          el.classList.remove('expanded');
+        },
+      );
+      setState(
+        { showAdditional: false },
+        (): any => {
+          el.style.height = null;
+        },
+      );
     }
   };
 
@@ -59,31 +61,21 @@ export default (props: IProps) => {
       id="onboarding_card"
     >
       <Grid
-        template={
-          (state.showAdditional && `"a a" "b c" "d e" "f g" "h h" "i i"`) ||
-          `"a a" "b c" "d e" "h h" "i i"`
-        }
+        template={(state.showAdditional && `"a a" "b c" "d e" "f g" "h h" "i i"`) || `"a a" "b c" "d e" "h h" "i i"`}
         templateColumns="1fr 1fr"
         gap={40}
         margin={40}
       >
         {/* Card Heading */}
-        <Heading
-          fontSize={50}
-          fontWeight={500}
-          marginBottom={0}
-          color="#042347"
-          gridArea="a"
-        >
+        <Heading fontSize={50} fontWeight={500} marginBottom={0} color="#042347" gridArea="a">
           Find recipes for your budget and skill level.
         </Heading>
         <Label fontSize={24} color="#4a4a4a" fontWeight={600} gridArea="d">
           BUDGET
-          <Select
-            use="select"
-            onChange={(e: any) => setState({ budget: e.target.value })}
-          >
-            <option value="" disabled selected hidden>Budget</option>
+          <Select use="select" onChange={(e: any) => setState({ budget: e.target.value })}>
+            <option value="" disabled selected hidden>
+              Budget
+            </option>
             <option value="">Any budget</option>
             <option value="low">Low</option>
             <option value="medium">Medium</option>
@@ -92,11 +84,10 @@ export default (props: IProps) => {
         </Label>
         <Label fontSize={24} color="#4a4a4a" fontWeight={600} gridArea="e">
           SKILL
-          <Select
-            use="select"
-            onChange={(e: any) => setState({ skill: e.target.value })}
-          >
-            <option value="" disabled selected hidden>Skill level</option>
+          <Select use="select" onChange={(e: any) => setState({ skill: e.target.value })}>
+            <option value="" disabled selected hidden>
+              Skill level
+            </option>
             <option value="">Any skill level</option>
             <option value="easy">Easy</option>
             <option value="mid">Mid</option>
@@ -105,11 +96,10 @@ export default (props: IProps) => {
         </Label>
         <Label fontSize={24} color="#4a4a4a" fontWeight={600} gridArea="b">
           MEAL
-          <Select
-            use="select"
-            onChange={(e: any) => setState({ meal: e.target.value })}
-          >
-            <option value="" disabled selected hidden>Meal type</option>
+          <Select use="select" onChange={(e: any) => setState({ meal: e.target.value })}>
+            <option value="" disabled selected hidden>
+              Meal type
+            </option>
             <option value="">Any meal type</option>
             <option value="breakfast">Breakfast</option>
             <option value="lunch">Lunch</option>
@@ -121,11 +111,10 @@ export default (props: IProps) => {
         </Label>
         <Label fontSize={24} color="#4a4a4a" fontWeight={600} gridArea="c">
           TIME
-          <Select
-            use="select"
-            onChange={(e: any) => setState({ time: e.target.value })}
-          >
-            <option value="" disabled selected hidden>Max cook time</option>
+          <Select use="select" onChange={(e: any) => setState({ time: e.target.value })}>
+            <option value="" disabled selected hidden>
+              Max cook time
+            </option>
             <option value="0.5">0.5 hours</option>
             <option value="1">1 hour</option>
             <option value="1.5">1.5 hours</option>
@@ -144,17 +133,16 @@ export default (props: IProps) => {
           onClick={showAdditionalClicked}
           className="optional_fader"
         >
-          {state.showAdditional && `-` || `+`} ADDITIONAL OPTIONS
+          {(state.showAdditional && `-`) || `+`} ADDITIONAL OPTIONS
         </Link>
         {state.showAdditional && (
           <>
             <Label fontSize={24} color="#4a4a4a" fontWeight={600} gridArea="f" className="poster_loader">
               CUISINE
-              <Select
-                use="select"
-                onChange={(e: any) => setState({ cuisine: e.target.value })}
-              >
-                <option value="" disabled selected hidden>Type of food</option>
+              <Select use="select" onChange={(e: any) => setState({ cuisine: e.target.value })}>
+                <option value="" disabled selected hidden>
+                  Type of food
+                </option>
                 <option value="">Any type of food</option>
                 <option value="chinese">Chinese</option>
                 <option value="indian">Indian</option>
@@ -166,13 +154,10 @@ export default (props: IProps) => {
             </Label>
             <Label fontSize={24} color="#4a4a4a" fontWeight={600} gridArea="g" className="poster_loader">
               RESTRICTIONS
-              <Select
-                use="select"
-                onChange={(e: any) =>
-                  setState({ restrictions: e.target.value })
-                }
-              >
-                <option value="" disabled selected hidden>Dietary needs</option>
+              <Select use="select" onChange={(e: any) => setState({ restrictions: e.target.value })}>
+                <option value="" disabled selected hidden>
+                  Dietary needs
+                </option>
                 <option value="">No restrictions</option>
                 <option value="vegetarian">Vegetarian</option>
                 <option value="vegan">Vegan</option>
@@ -211,9 +196,8 @@ const Card = styled(Grid)<CardProps>`
   overflow: hidden;
   @media (max-width: 768px) {
     div {
-      grid-template: ${props =>
-        (props.showAdditional && `"a" "b" "c" "d" "e" "f" "g" "h" "i"`) ||
-        `"a" "b" "c" "d" "e" "h" "i"`} !important;
+      grid-template: ${(props: CardProps): string =>
+        (props.showAdditional && `"a" "b" "c" "d" "e" "f" "g" "h" "i"`) || `"a" "b" "c" "d" "e" "h" "i"`} !important;
     }
     button {
       justify-self: center !important;

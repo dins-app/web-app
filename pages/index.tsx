@@ -1,17 +1,17 @@
-import React from "react";
-import { Context, RecipePreviewTile, OnboardingCard } from "../components";
-import { styled, Grid, Image, Heading, Link, Box, Button } from "reakit";
-import { keyframes } from "styled-components";
-import { RouterProps } from "next/router";
-import RouterLink from "next/link";
+import React from 'react';
+import { Context, RecipePreviewTile, OnboardingCard } from '../components';
+import { styled, Grid, Image, Heading, Link, Box } from 'reakit';
+import { keyframes } from 'styled-components';
+import { RouterProps } from 'next/router';
+import RouterLink from 'next/link';
 
 // Props types
-interface IProps {
+interface Props {
   router: RouterProps;
 }
 
 // State types
-interface IState {
+interface State {
   budget?: string;
   skill?: string;
   meal?: string;
@@ -21,40 +21,34 @@ interface IState {
   showAdditional?: boolean;
 }
 
-export default class extends React.Component<IProps, IState> {
-  constructor(props: IProps) {
+class IndexPage extends React.Component<Props, State> {
+  public constructor(props: Props) {
     super(props);
     const initialState = {
-      showAdditional: false
+      showAdditional: false,
     };
     this.state = initialState;
   }
 
   // needed for access to this.context
-  static contextType = Context;
+  public static contextType = Context;
 
-  interface;
-
-  loadPoster() {
-    const img: any = window.document.querySelector(".poster > img");
+  public loadPoster(): void {
+    const img: any = window.document.querySelector('.poster > img');
     const newImg: any = new (window as any).Image(); // just to make typescript happy
     newImg.src = img.src;
-    newImg.onload = () => {
-      img.classList.add("poster_loaded");
+    newImg.onload = (): void => {
+      img.classList.add('poster_loaded');
     };
   }
 
-  async componentDidMount() {
+  public async componentDidMount(): Promise<void> {
     this.loadPoster();
   }
 
-  render() {
+  public render(): JSX.Element {
     return (
-      <PageGrid
-        padding={40}
-        gap={60}
-        showAdditional={this.state.showAdditional}
-      >
+      <PageGrid padding={40} gap={60} showAdditional={this.state.showAdditional}>
         {/* Poster Container */}
         <Box
           absolute
@@ -68,17 +62,11 @@ export default class extends React.Component<IProps, IState> {
         >
           {/* Poster */}
           <picture className="poster">
-            <source
-              srcSet={require("../static/img/poster.jpg?webp")}
-              type="image/webp"
-            />
-            <source
-              srcSet={require("../static/img/poster.jpg")}
-              type="image/jpeg"
-            />
+            <source srcSet={require('../static/img/poster.jpg?webp')} type="image/webp" />
+            <source srcSet={require('../static/img/poster.jpg')} type="image/jpeg" />
             <Image
               absolute
-              src={require("../static/img/poster.jpg")}
+              src={require('../static/img/poster.jpg')}
               top={0}
               left={0}
               alt="poster"
@@ -91,39 +79,20 @@ export default class extends React.Component<IProps, IState> {
         {/* Section 1 - Logo and Login Link */}
         <Grid template={`"a b"`} gap={10} className="logo_grid">
           {/* Logo */}
-          <picture className="logo" style={{ gridArea: "a" }}>
-            <source
-              srcSet={require("../static/img/logo.png?webp")}
-              type="image/webp"
-            />
-            <source
-              srcSet={require("../static/img/logo.png")}
-              type="image/jpeg"
-            />
-            <Image
-              src={require("../static/img/logo.png")}
-              alt="logo"
-              width={200}
-            />
+          <picture className="logo" style={{ gridArea: 'a' }}>
+            <source srcSet={require('../static/img/logo.png?webp')} type="image/webp" />
+            <source srcSet={require('../static/img/logo.png')} type="image/jpeg" />
+            <Image src={require('../static/img/logo.png')} alt="logo" width={200} />
           </picture>
           {/* Login Link */}
-          <Link
-            color="#fff"
-            fontSize={24}
-            fontWeight={600}
-            cursor="pointer"
-            gridArea="b"
-            justifySelf="end"
-          >
+          <Link color="#fff" fontSize={24} fontWeight={600} cursor="pointer" gridArea="b" justifySelf="end">
             Login
           </Link>
         </Grid>
         {/* Section 2 - Card */}
         <OnboardingCard
           state={this.state}
-          setState={(obj: Object, callback?: any) =>
-            this.setState(obj, callback)
-          }
+          setState={(obj: Record<string, any>, callback?: any) => this.setState(obj, callback)}
         />
         {/* Section 3 - Call To Action */}
         <Heading
@@ -137,18 +106,15 @@ export default class extends React.Component<IProps, IState> {
           Check out some of our most popular recipes
         </Heading>
         {/* Section 4 - Recipe Preview Tiles */}
-        <Grid
-          templateColumns="repeat(auto-fit, minmax(400px, 1fr))"
-          className="recipe_preview_grid"
-        >
+        <Grid templateColumns="repeat(auto-fit, minmax(400px, 1fr))" className="recipe_preview_grid">
           <RecipePreviewTile
             name="Tuscan Kale Chips"
             time="1"
             price="8"
             difficulty="easy"
             images={{
-              webp: require("../static/img/kale.jpg?webp"),
-              jpg: require("../static/img/kale.jpg")
+              webp: require('../static/img/kale.jpg?webp'),
+              jpg: require('../static/img/kale.jpg'),
             }}
           />
           <RecipePreviewTile
@@ -157,8 +123,8 @@ export default class extends React.Component<IProps, IState> {
             price="6"
             difficulty="mid"
             images={{
-              webp: require("../static/img/spaghetti.jpg?webp"),
-              jpg: require("../static/img/spaghetti.jpg")
+              webp: require('../static/img/spaghetti.jpg?webp'),
+              jpg: require('../static/img/spaghetti.jpg'),
             }}
           />
           <RecipePreviewTile
@@ -167,21 +133,14 @@ export default class extends React.Component<IProps, IState> {
             price="8"
             difficulty="hard"
             images={{
-              webp: require("../static/img/meatballs.jpg?webp"),
-              jpg: require("../static/img/meatballs.jpg")
+              webp: require('../static/img/meatballs.jpg?webp'),
+              jpg: require('../static/img/meatballs.jpg'),
             }}
           />
         </Grid>
         {/* Section 5 - Link to Recipes Page */}
         <RouterLink prefetch href="/recipes">
-          <Link
-            fontSize={28}
-            marginBottom={70}
-            cursor="pointer"
-            justifySelf="center"
-            color="#266ab8"
-            fontWeight={500}
-          >
+          <Link fontSize={28} marginBottom={70} cursor="pointer" justifySelf="center" color="#266ab8" fontWeight={500}>
             See More...
           </Link>
         </RouterLink>
@@ -189,6 +148,8 @@ export default class extends React.Component<IProps, IState> {
     );
   }
 }
+
+export default IndexPage;
 
 // Styled Components, Media Queries, and Animations
 const SlideIn = keyframes`
@@ -222,7 +183,7 @@ const PopIn = keyframes`
     opacity: 1;
   }
 `;
-const PageGrid = styled(Grid)<IState>`
+const PageGrid = styled(Grid)<State>`
   animation: ${SlideIn} 1s ease-in-out;
   .poster > img {
     opacity: 0;
@@ -247,14 +208,13 @@ const PageGrid = styled(Grid)<IState>`
   }
   @media (max-width: 768px) {
     .logo_grid {
-      grid-template: "b" "a" !important;
+      grid-template: 'b' 'a' !important;
       .logo {
         justify-self: center;
       }
     }
     .poster_box {
-      height: ${props =>
-        (props.showAdditional && `1760px`) || `1480px`} !important;
+      height: ${props => (props.showAdditional && `1760px`) || `1480px`} !important;
     }
   }
   @media (max-width: 425px) {
@@ -263,8 +223,7 @@ const PageGrid = styled(Grid)<IState>`
       margin: 10px !important;
     }
     .poster_box {
-      height: ${props =>
-        (props.showAdditional && `1760px`) || `1480px`} !important;
+      height: ${props => (props.showAdditional && `1760px`) || `1480px`} !important;
     }
     .cta_text {
       font-size: 40px !important;

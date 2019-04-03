@@ -1,9 +1,9 @@
-import Document, { Head, Main, NextScript } from "next/document";
-import { ServerStyleSheet } from "styled-components";
+import Document, { Head, Main, NextScript } from 'next/document';
+import { ServerStyleSheet } from 'styled-components';
+import React from 'react';
 
-export const title = "Dins";
-const description =
-  "Dins helps you find the ideal recipes based on your budget and skill level.";
+export const title = 'Dins';
+const description = 'Dins helps you find the ideal recipes based on your budget and skill level.';
 const url = `https://dins.app`;
 const thumbnail = `${url}/static/graphics/thumbnail.png`;
 
@@ -14,16 +14,14 @@ interface Props {
 export default class MyDocument extends Document<Props> {
   // This snippet will collect all of page’s critical CSS
   // while the is being server-side rendered
-  static getInitialProps({ renderPage }: { renderPage: any }): any {
+  public static getInitialProps({ renderPage }: { renderPage: any }): any {
     const sheet = new ServerStyleSheet();
-    const page = renderPage((App: any) => (props: any) =>
-      sheet.collectStyles(<App {...props} />)
-    );
+    const page = renderPage((App: any) => (props: any) => sheet.collectStyles(<App {...props} />));
     const styleTags = sheet.getStyleElement();
     return { ...page, styleTags };
   }
 
-  render() {
+  public render(): any {
     return (
       <html lang="en">
         <Head>
@@ -46,10 +44,7 @@ export default class MyDocument extends Document<Props> {
           <meta name="robots" content="index, follow" />
 
           {/* SEO: Search engine keywords*/}
-          <meta
-            name="keywords"
-            content="lasagna,food,recipe,ingredients,ingredient,budget,preferences,cater,dietary"
-          />
+          <meta name="keywords" content="lasagna,food,recipe,ingredients,ingredient,budget,preferences,cater,dietary" />
 
           {/* Bonus: Have beautiful preview tiles when users share your website on social media */}
           <meta property="og:title" content={title} />
@@ -65,31 +60,11 @@ export default class MyDocument extends Document<Props> {
           {/* Bonus: Have app icon and splash screen for PWAs saved to homescreen on iOS devices */}
           <meta name="apple-mobile-web-app-capable" content="yes" />
           <meta name="apple-mobile-web-app-status-bar-style" content="black" />
-          <link
-            rel="apple-touch-icon"
-            sizes="57x57"
-            href="./static/graphics/icon-57.png"
-          />
-          <link
-            rel="apple-touch-icon"
-            sizes="72x72"
-            href="./static/graphics/icon-72.png"
-          />
-          <link
-            rel="apple-touch-icon"
-            sizes="114x114"
-            href="./static/graphics/icon-114.png"
-          />
-          <link
-            rel="apple-touch-icon"
-            sizes="144x144"
-            href="./static/graphics/icon-144.png"
-          />
-          <link
-            rel="apple-touch-icon"
-            sizes="512x512"
-            href="./static/graphics/icon-512.png"
-          />
+          <link rel="apple-touch-icon" sizes="57x57" href="./static/graphics/icon-57.png" />
+          <link rel="apple-touch-icon" sizes="72x72" href="./static/graphics/icon-72.png" />
+          <link rel="apple-touch-icon" sizes="114x114" href="./static/graphics/icon-114.png" />
+          <link rel="apple-touch-icon" sizes="144x144" href="./static/graphics/icon-144.png" />
+          <link rel="apple-touch-icon" sizes="512x512" href="./static/graphics/icon-512.png" />
           <link
             href="./static/graphics/splash-2048.png"
             media="(device-width: 1024px) and (device-height: 1366px) and (-webkit-device-pixel-ratio: 2)"
@@ -125,14 +100,16 @@ export default class MyDocument extends Document<Props> {
             media="(device-width: 320px) and (device-height: 568px) and (-webkit-device-pixel-ratio: 2)"
             rel="apple-touch-startup-image"
           />
-          <link rel="shortcut icon" href="static/img/favicon.ico" type="image/x-icon"/>
+          <link rel="shortcut icon" href="static/img/favicon.ico" type="image/x-icon" />
 
           {/* FONTS */}
           {/* <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet"></link> */}
-          <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet"></link>
+          <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet" />
 
           {/* Apple PWA fix */}
-          <script dangerouslySetInnerHTML={{ __html: `
+          <script
+            dangerouslySetInnerHTML={{
+              __html: `
             if (!!navigator.platform && /iP(?:hone|ad|od)/.test(navigator.platform)) {
               document.querySelector("link[rel='manifest']").setAttribute("rel", "no-ios");
               document.title = "Learnit"; // default app name | simulate short_name
@@ -141,9 +118,15 @@ export default class MyDocument extends Document<Props> {
                 window.location = "/"; // simulate start_url
               }
             }
-          `}} />
+          `,
+            }}
+          />
         </Head>
-        <body onTouchStart={() => {return true}}>
+        <body
+          onTouchStart={() => {
+            return true;
+          }}
+        >
           <noscript>You need to enable JavaScript to run this app.</noscript>
           <Main />
           <NextScript />
