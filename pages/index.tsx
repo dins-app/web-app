@@ -92,7 +92,7 @@ class IndexPage extends React.Component<Props, State> {
         {/* Section 2 - Card */}
         <OnboardingCard
           state={this.state}
-          setState={(obj: Record<string, any>, callback?: any) => this.setState(obj, callback)}
+          setState={(obj: Record<string, any>, callback?: any): void => this.setState(obj, callback)}
         />
         {/* Section 3 - Call To Action */}
         <Heading
@@ -196,7 +196,7 @@ const PageGrid = styled(Grid)<State>`
     animation: ${PopIn} 0.4s ease-in-out;
   }
   .poster_box {
-    ${props => props.showAdditional && `height: 1260px!important;`}
+    ${(props: State): string => props.showAdditional && `height: 1260px!important;`}
   }
   @media (max-width: 1024px) {
     .poster img {
@@ -214,7 +214,7 @@ const PageGrid = styled(Grid)<State>`
       }
     }
     .poster_box {
-      height: ${props => (props.showAdditional && `1760px`) || `1480px`} !important;
+      height: ${(props: State): string => (props.showAdditional && `1760px`) || `1480px`} !important;
     }
   }
   @media (max-width: 425px) {
@@ -223,7 +223,7 @@ const PageGrid = styled(Grid)<State>`
       margin: 10px !important;
     }
     .poster_box {
-      height: ${props => (props.showAdditional && `1760px`) || `1480px`} !important;
+      height: ${(props: State): string => (props.showAdditional && `1760px`) || `1480px`} !important;
     }
     .cta_text {
       font-size: 40px !important;

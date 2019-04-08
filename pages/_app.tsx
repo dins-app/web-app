@@ -31,7 +31,7 @@ export default class MyApp extends App {
     return { pageProps };
   }
 
-  public render(): any {
+  public render(): JSX.Element {
     const { Component, pageProps, router } = this.props;
 
     return (

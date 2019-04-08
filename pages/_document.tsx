@@ -1,4 +1,4 @@
-import Document, { Head, Main, NextScript } from 'next/document';
+import Document, { Head, Main, NextScript, DefaultDocumentIProps } from 'next/document';
 import { ServerStyleSheet } from 'styled-components';
 import React from 'react';
 
@@ -14,14 +14,16 @@ interface Props {
 export default class MyDocument extends Document<Props> {
   // This snippet will collect all of page’s critical CSS
   // while the is being server-side rendered
-  public static getInitialProps({ renderPage }: { renderPage: any }): any {
+  public static getInitialProps({ renderPage }: { renderPage: any }): DefaultDocumentIProps {
     const sheet = new ServerStyleSheet();
-    const page = renderPage((App: any) => (props: any) => sheet.collectStyles(<App {...props} />));
+    const page = renderPage(
+      (App: any): any => (props: any): React.ReactElement => sheet.collectStyles(<App {...props} />),
+    );
     const styleTags = sheet.getStyleElement();
     return { ...page, styleTags };
   }
 
-  public render(): any {
+  public render(): JSX.Element {
     return (
       <html lang="en">
         <Head>
@@ -123,7 +125,7 @@ export default class MyDocument extends Document<Props> {
           />
         </Head>
         <body
-          onTouchStart={() => {
+          onTouchStart={(): boolean => {
             return true;
           }}
         >
