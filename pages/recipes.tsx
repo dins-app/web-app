@@ -38,6 +38,7 @@ export default class Recipes extends React.Component<Props> {
         <Grid
           template={`"a b c d e f"`}
           style={{ justifyItems: 'center', borderBottom: '1px solid black', height: 147 }}
+          className="recipe_options"
         >
           <Button
             style={{
@@ -47,7 +48,6 @@ export default class Recipes extends React.Component<Props> {
               fontSize: 30,
               minWidth: 180,
               margin: 'auto',
-              marginTop: 40,
               paddingLeft: 20,
               paddingRight: 20,
               height: 56,
@@ -147,7 +147,7 @@ export default class Recipes extends React.Component<Props> {
           Dinner recipes for you
         </Heading>
 
-        <Grid templateColumns="repeat(auto-fit, minmax(400px, 1fr))" style={{ marginLeft: 40, marginRight: 40 }}>
+        <Grid templateColumns="repeat(auto-fit, minmax(350px, 1fr))" style={{ marginLeft: 40, marginRight: 40 }} class>
           <RecipePreviewTile
             name="Tuscan Kale Chips"
             time="1"
@@ -216,19 +216,26 @@ export default class Recipes extends React.Component<Props> {
 
 const PageGrid = styled(Grid)`
   @media (max-width: 1024px) {
-    .poster img {
-      object-fit: cover !important;
+    .recipe_options {
+      grid-template:
+        'a b'
+        'c d'
+        'e f' !important;
+      grid-row-gap: 10px;
     }
-    .cta_text {
-      font-size: 50px !important;
+
+    .recipe_options > button {
+      align-self: center;
+      margin: 10px;
     }
   }
   @media (max-width: 768px) {
-    .logo_grid {
-      grid-template: 'b' 'a' !important;
-      .logo {
-        justify-self: center;
-      }
+    .recipe_previews {
+      grid-template:
+        'a b'
+        'c d'
+        'e f' !important;
+      grid-template-columns: repeat(auto-fit, 150px) !important;
     }
   }
   @media (max-width: 425px) {
@@ -240,7 +247,7 @@ const PageGrid = styled(Grid)`
       font-size: 40px !important;
       text-align: center;
     }
-    .recipe_preview_grid {
+    .recipe_previews {
       grid-template-columns: unset !important;
       h2 {
         font-size: 30px !important;
