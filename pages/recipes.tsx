@@ -1,6 +1,6 @@
 import React from 'react';
 import { RouterProps } from 'next/router';
-import { styled, Button, Grid, Image, Link, Heading } from 'reakit';
+import { styled, Button, Box, Flex, Grid, Image, Link, Heading } from 'reakit';
 import { RecipePreviewTile } from '../components';
 
 interface Props {
@@ -14,8 +14,8 @@ export default class Recipes extends React.Component<Props> {
 
   public render(): JSX.Element {
     return (
-      <PageGrid gap={10}>
-        <Grid backgroundColor="#65C4E5" template={`"a b"`} gap={10} className="logo_grid">
+      <PageGrid gap={10} style={{ width: '100%' }}>
+        <Grid backgroundColor="var(--posterBgColor)" template={`"a b"`} gap={10} className="logo_grid">
           {/* Logo */}
           <picture className="logo" style={{ gridArea: 'a', marginTop: 40, marginLeft: 40, marginBottom: 37 }}>
             <source srcSet={require('../static/img/logo.png?webp')} type="image/webp" />
@@ -35,19 +35,13 @@ export default class Recipes extends React.Component<Props> {
             Login
           </Link>
         </Grid>
-        <Grid
-          template={`"a b c d e f"`}
-          style={{ justifyItems: 'center', borderBottom: '1px solid black', height: 147 }}
-          className="recipe_options"
-        >
+        <Flex flexWrap="wrap" alignItems="center" margin="15px">
           <Button
             style={{
-              gridArea: 'a',
-              width: 'auto',
               backgroundColor: '#245463',
               fontSize: 30,
-              minWidth: 180,
-              margin: 'auto',
+              minWidth: 'min-content',
+              margin: '5px',
               paddingLeft: 20,
               paddingRight: 20,
               height: 56,
@@ -58,12 +52,10 @@ export default class Recipes extends React.Component<Props> {
           </Button>
           <Button
             style={{
-              gridArea: 'b',
-              width: 'auto',
               backgroundColor: '#245463',
               fontSize: 30,
-              minWidth: 180,
-              margin: 'auto',
+              minWidth: 'min-content',
+              margin: '5px',
               paddingLeft: 20,
               paddingRight: 20,
               height: 56,
@@ -74,11 +66,10 @@ export default class Recipes extends React.Component<Props> {
           </Button>
           <Button
             style={{
-              gridArea: 'c',
               backgroundColor: '#245463',
               fontSize: 30,
-              minWidth: 180,
-              margin: 'auto',
+              minWidth: 'min-content',
+              margin: '5px',
               paddingLeft: 20,
               paddingRight: 20,
               height: 56,
@@ -89,11 +80,10 @@ export default class Recipes extends React.Component<Props> {
           </Button>
           <Button
             style={{
-              gridArea: 'd',
               fontSize: 30,
               backgroundColor: '#245463',
-              minWidth: 180,
-              margin: 'auto',
+              minWidth: 'min-content',
+              margin: '5px',
               paddingLeft: 20,
               paddingRight: 20,
               height: 56,
@@ -104,11 +94,10 @@ export default class Recipes extends React.Component<Props> {
           </Button>
           <Button
             style={{
-              gridArea: 'e',
               fontSize: 30,
               backgroundColor: 'white',
-              minWidth: 180,
-              margin: 'auto',
+              minWidth: 'min-content',
+              margin: '5px',
               paddingLeft: 20,
               paddingRight: 20,
               height: 56,
@@ -119,12 +108,11 @@ export default class Recipes extends React.Component<Props> {
           </Button>
           <Button
             style={{
-              gridArea: 'f',
               fontSize: 30,
               borderColor: '#245463 !important',
               backgroundColor: 'white',
-              minWidth: 180,
-              margin: 'auto',
+              minWidth: 'min-content',
+              margin: '5px',
               paddingLeft: 20,
               paddingRight: 20,
               height: 56,
@@ -133,7 +121,8 @@ export default class Recipes extends React.Component<Props> {
           >
             Restrictions
           </Button>
-        </Grid>
+        </Flex>
+        <Box width="100%" border="1px solid black" />
         <Heading
           fontSize={64}
           fontWeight={500}
@@ -215,59 +204,6 @@ export default class Recipes extends React.Component<Props> {
 }
 
 const PageGrid = styled(Grid)`
-  @media (max-width: 1366px) {
-    .recipe_options {
-      grid-template:
-        'a b'
-        'c d'
-        'e f' !important;
-      grid-row-gap: 10px;
-      height: unset !important;
-      margin: 10px 0px 10px 0px;
-    }
-
-    .recipe_options button {
-      place-self: center;
-      margin: 20px;
-    }
-  }
-  @media (max-width: 1024px) {
-    .recipe_options {
-      grid-template:
-        'a b'
-        'c d'
-        'e f' !important;
-      grid-row-gap: 10px;
-      height: unset !important;
-      margin: 10px 0px 10px 0px;
-    }
-
-    .recipe_options button {
-      place-self: center;
-      margin: 20px;
-    }
-  }
   @media (max-width: 768px) {
-    .recipe_options {
-      grid-template:
-        'a b'
-        'c d'
-        'e f' !important;
-      grid-row-gap: 10px;
-      height: unset !important;
-    }
-
-    .recipe_options > button {
-      place-self: center;
-      margin: 10px;
-    }
-  }
-  @media (max-width: 425px) {
-    .recipe_previews {
-      grid-template-columns: unset !important;
-      h2 {
-        font-size: 30px !important;
-      }
-    }
   }
 `;
