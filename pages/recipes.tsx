@@ -147,7 +147,7 @@ export default class Recipes extends React.Component<Props> {
           Dinner recipes for you
         </Heading>
 
-        <Grid templateColumns="repeat(auto-fit, minmax(350px, 1fr))" style={{ marginLeft: 40, marginRight: 40 }} class>
+        <Grid templateColumns="repeat(auto-fit, minmax(350px, 1fr))" style={{ marginLeft: 40, marginRight: 40 }}>
           <RecipePreviewTile
             name="Tuscan Kale Chips"
             time="1"
@@ -215,6 +215,22 @@ export default class Recipes extends React.Component<Props> {
 }
 
 const PageGrid = styled(Grid)`
+  @media (max-width: 1366px) {
+    .recipe_options {
+      grid-template:
+        'a b'
+        'c d'
+        'e f' !important;
+      grid-row-gap: 10px;
+      height: unset !important;
+      margin: 10px 0px 10px 0px;
+    }
+
+    .recipe_options button {
+      place-self: center;
+      margin: 20px;
+    }
+  }
   @media (max-width: 1024px) {
     .recipe_options {
       grid-template:
@@ -222,31 +238,31 @@ const PageGrid = styled(Grid)`
         'c d'
         'e f' !important;
       grid-row-gap: 10px;
+      height: unset !important;
+      margin: 10px 0px 10px 0px;
     }
 
-    .recipe_options > button {
-      align-self: center;
-      margin: 10px;
+    .recipe_options button {
+      place-self: center;
+      margin: 20px;
     }
   }
   @media (max-width: 768px) {
-    .recipe_previews {
+    .recipe_options {
       grid-template:
         'a b'
         'c d'
         'e f' !important;
-      grid-template-columns: repeat(auto-fit, 150px) !important;
+      grid-row-gap: 10px;
+      height: unset !important;
+    }
+
+    .recipe_options > button {
+      place-self: center;
+      margin: 10px;
     }
   }
   @media (max-width: 425px) {
-    padding: 15px !important;
-    .logo_grid {
-      margin: 10px !important;
-    }
-    .cta_text {
-      font-size: 40px !important;
-      text-align: center;
-    }
     .recipe_previews {
       grid-template-columns: unset !important;
       h2 {
