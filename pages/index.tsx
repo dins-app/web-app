@@ -193,7 +193,7 @@ const PopIn = keyframes`
     opacity: 1;
   }
 `;
-const PageGrid = styled(Grid)<State>`
+const PageGrid = styled(Grid)`
   animation: ${SlideIn} 1s ease-in-out;
   .poster > img {
     opacity: 0;
