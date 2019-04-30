@@ -14,28 +14,39 @@ export default class Recipes extends React.Component<Props> {
 
   public render(): JSX.Element {
     return (
-      <PageGrid gap={10} style={{ width: '100%' }}>
-        <Grid backgroundColor="var(--posterBgColor)" template={`"a b"`} gap={10} className="logo_grid">
+      <PageGrid gap={40} padding={40}>
+        <Box
+          absolute
+          top={0}
+          left={0}
+          backgroundColor="var(--posterBgColor)"
+          height="200px"
+          width="calc(100vw - (100vw - 100%))"
+          zIndex={-90}
+          className="poster_box"
+        />
+        <Grid width="100%" height="134px" template={`"a b"`} gap={10} className="logo_grid">
           {/* Logo */}
-          <picture className="logo" style={{ gridArea: 'a', marginTop: 40, marginLeft: 40, marginBottom: 37 }}>
+          <picture className="logo" gridArea="a" marginBottom="37px">
             <source srcSet={require('../static/img/logo.png?webp')} type="image/webp" />
             <source srcSet={require('../static/img/logo.png')} type="image/jpeg" />
             <Image src={require('../static/img/logo.png')} alt="logo" width={200} />
           </picture>
           {/* Login Link */}
           <Link
+            gridArea="b"
             color="#fff"
             fontSize={24}
             fontWeight={600}
             cursor="pointer"
-            gridArea="b"
             justifySelf="end"
+            alignItems="center"
             marginRight={40}
           >
             Login
           </Link>
         </Grid>
-        <Flex flexWrap="wrap" alignItems="center" margin="15px">
+        <Flex flexWrap="wrap" alignItems="center">
           <Button
             style={{
               backgroundColor: '#245463',
@@ -122,9 +133,9 @@ export default class Recipes extends React.Component<Props> {
             Restrictions
           </Button>
         </Flex>
-        <Box width="100%" border="1px solid black" />
+        <Box marginLeft="-40px" width="100vw" border="1px solid black" />
         <Heading
-          fontSize={64}
+          fontSize={56}
           fontWeight={500}
           color="#042347"
           margin={0}
@@ -205,5 +216,15 @@ export default class Recipes extends React.Component<Props> {
 
 const PageGrid = styled(Grid)`
   @media (max-width: 768px) {
+    .logo_grid {
+      grid-template: 'b' 'a' !important;
+    }
+    .logo_grid picture {
+      margin-left: auto !important;
+      margin-right: auto !important;
+    }
+    .logo_grid a {
+      justify-self: end;
+    }
   }
 `;
