@@ -85,7 +85,7 @@ class IndexPage extends React.Component<Props, State> {
             <Image src={require('../static/img/logo.png')} alt="logo" width={200} />
           </picture>
           {/* Login Link */}
-          <Link color="#fff" fontSize={24} fontWeight={600} cursor="pointer" gridArea="b" justifySelf="end">
+          <Link color="#fff" fontSize={24} fontWeight={700} cursor="pointer" gridArea="b" justifySelf="end">
             Login
           </Link>
         </Grid>
@@ -96,17 +96,17 @@ class IndexPage extends React.Component<Props, State> {
         />
         {/* Section 3 - Call To Action */}
         <Heading
-          fontSize={64}
+          fontSize={54}
           fontWeight={500}
           color="#042347"
           margin={0}
-          marginTop={260}
+          marginTop={240}
           className="cta_text optional_fader"
         >
           Check out some of our most popular recipes
         </Heading>
         {/* Section 4 - Recipe Preview Tiles */}
-        <Grid templateColumns="repeat(auto-fit, minmax(400px, 1fr))" className="recipe_preview_grid">
+        <Grid templateColumns="repeat(auto-fill, minmax(300px, 1fr))" className="recipe_preview_grid">
           <RecipePreviewTile
             name="Tuscan Kale Chips"
             time="1"
@@ -135,6 +135,16 @@ class IndexPage extends React.Component<Props, State> {
             images={{
               webp: require('../static/img/meatballs.jpg?webp'),
               jpg: require('../static/img/meatballs.jpg'),
+            }}
+          />
+          <RecipePreviewTile
+            name="Tuscan Kale Chips"
+            time="1"
+            price="8"
+            difficulty="easy"
+            images={{
+              webp: require('../static/img/kale.jpg?webp'),
+              jpg: require('../static/img/kale.jpg'),
             }}
           />
         </Grid>

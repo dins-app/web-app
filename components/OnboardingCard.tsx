@@ -70,7 +70,7 @@ export default (props: Props): any => {
         <Heading fontSize={50} fontWeight={500} marginBottom={0} color="#042347" gridArea="a">
           Find recipes for your budget and skill level.
         </Heading>
-        <Label fontSize={24} color="#4a4a4a" fontWeight={600} gridArea="d">
+        <Label fontSize={24} color="#4a4a4a" fontWeight={700} gridArea="d">
           BUDGET
           <Select use="select" onChange={(e: any) => setState({ budget: e.target.value })}>
             <option value="" disabled selected hidden>
@@ -82,7 +82,7 @@ export default (props: Props): any => {
             <option value="high">High</option>
           </Select>
         </Label>
-        <Label fontSize={24} color="#4a4a4a" fontWeight={600} gridArea="e">
+        <Label fontSize={24} color="#4a4a4a" fontWeight={700} gridArea="e">
           SKILL
           <Select use="select" onChange={(e: any) => setState({ skill: e.target.value })}>
             <option value="" disabled selected hidden>
@@ -94,7 +94,7 @@ export default (props: Props): any => {
             <option value="hard">Hard</option>
           </Select>
         </Label>
-        <Label fontSize={24} color="#4a4a4a" fontWeight={600} gridArea="b">
+        <Label fontSize={24} color="#4a4a4a" fontWeight={700} gridArea="b">
           MEAL
           <Select use="select" onChange={(e: any) => setState({ meal: e.target.value })}>
             <option value="" disabled selected hidden>
@@ -109,7 +109,7 @@ export default (props: Props): any => {
             <option value="drink">Drink</option>
           </Select>
         </Label>
-        <Label fontSize={24} color="#4a4a4a" fontWeight={600} gridArea="c">
+        <Label fontSize={24} color="#4a4a4a" fontWeight={700} gridArea="c">
           TIME
           <Select use="select" onChange={(e: any) => setState({ time: e.target.value })}>
             <option value="" disabled selected hidden>
@@ -127,7 +127,7 @@ export default (props: Props): any => {
         <Link
           color="#266ab8"
           fontSize={24}
-          fontWeight={600}
+          fontWeight={700}
           gridArea="h"
           cursor="pointer"
           onClick={showAdditionalClicked}
@@ -137,7 +137,7 @@ export default (props: Props): any => {
         </Link>
         {state.showAdditional && (
           <>
-            <Label fontSize={24} color="#4a4a4a" fontWeight={600} gridArea="f" className="poster_loader">
+            <Label fontSize={24} color="#4a4a4a" fontWeight={700} gridArea="f" className="poster_loader">
               CUISINE
               <Select use="select" onChange={(e: any) => setState({ cuisine: e.target.value })}>
                 <option value="" disabled selected hidden>
@@ -152,7 +152,7 @@ export default (props: Props): any => {
                 <option value="thai">Thai</option>
               </Select>
             </Label>
-            <Label fontSize={24} color="#4a4a4a" fontWeight={600} gridArea="g" className="poster_loader">
+            <Label fontSize={24} color="#4a4a4a" fontWeight={700} gridArea="g" className="poster_loader">
               RESTRICTIONS
               <Select use="select" onChange={(e: any) => setState({ restrictions: e.target.value })}>
                 <option value="" disabled selected hidden>
