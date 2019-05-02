@@ -14,7 +14,7 @@ export default class Recipes extends React.Component<Props> {
 
   public render(): JSX.Element {
     return (
-      <PageGrid gap={40} padding={40}>
+      <PageGrid gap={20} padding={40}>
         <Box
           absolute
           top={0}
@@ -27,7 +27,7 @@ export default class Recipes extends React.Component<Props> {
         />
         <Grid width="100%" height="134px" template={`"a b"`} gap={10} className="logo_grid">
           {/* Logo */}
-          <picture className="logo" gridArea="a" marginBottom="37px">
+          <picture className="logo" gridArea="a" paddingBottom="37px">
             <source srcSet={require('../static/img/logo.png?webp')} type="image/webp" />
             <source srcSet={require('../static/img/logo.png')} type="image/jpeg" />
             <Image src={require('../static/img/logo.png')} alt="logo" width={200} />
@@ -46,7 +46,7 @@ export default class Recipes extends React.Component<Props> {
             Login
           </Link>
         </Grid>
-        <Flex flexWrap="wrap" alignItems="center">
+        <Flex flexWrap="wrap" alignItems="center" margin="20px 0px 0px 0px">
           <Button
             fontSize={30}
             backgroundColor="#245463"
@@ -211,11 +211,13 @@ const PageGrid = styled(Grid)`
       grid-template: 'b' 'a' !important;
     }
     .logo_grid picture {
-      margin-left: auto !important;
-      margin-right: auto !important;
+      justify-self: center;
     }
     .logo_grid a {
       justify-self: end;
+    }
+    .logo_grid b {
+      padding-bottom: 20px;
     }
   }
 `;
