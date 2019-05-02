@@ -48,72 +48,64 @@ export default class Recipes extends React.Component<Props> {
         </Grid>
         <Flex flexWrap="wrap" alignItems="center">
           <Button
-            style={{
-              backgroundColor: '#245463',
-              fontSize: 30,
-              minWidth: 'min-content',
-              margin: '5px',
-              paddingLeft: 20,
-              paddingRight: 20,
-              height: 56,
-              borderRadius: 18,
-            }}
+            fontSize={30}
+            backgroundColor="#245463"
+            minWidth="min-content"
+            margin="5px"
+            paddingLeft={20}
+            paddingRight={20}
+            height={56}
+            borderRadius={18}
           >
             Dinner
           </Button>
           <Button
-            style={{
-              backgroundColor: '#245463',
-              fontSize: 30,
-              minWidth: 'min-content',
-              margin: '5px',
-              paddingLeft: 20,
-              paddingRight: 20,
-              height: 56,
-              borderRadius: 18,
-            }}
+            fontSize={30}
+            backgroundColor="#245463"
+            minWidth="min-content"
+            margin="5px"
+            paddingLeft={20}
+            paddingRight={20}
+            height={56}
+            borderRadius={18}
           >
             Max 2.5 hours
           </Button>
           <Button
-            style={{
-              backgroundColor: '#245463',
-              fontSize: 30,
-              minWidth: 'min-content',
-              margin: '5px',
-              paddingLeft: 20,
-              paddingRight: 20,
-              height: 56,
-              borderRadius: 18,
-            }}
+            fontSize={30}
+            backgroundColor="#245463"
+            minWidth="min-content"
+            margin="5px"
+            paddingLeft={20}
+            paddingRight={20}
+            height={56}
+            borderRadius={18}
           >
             Low budget
           </Button>
           <Button
-            style={{
-              fontSize: 30,
-              backgroundColor: '#245463',
-              minWidth: 'min-content',
-              margin: '5px',
-              paddingLeft: 20,
-              paddingRight: 20,
-              height: 56,
-              borderRadius: 18,
-            }}
+            fontSize={30}
+            backgroundColor="#245463"
+            minWidth="min-content"
+            margin="5px"
+            paddingLeft={20}
+            paddingRight={20}
+            height={56}
+            borderRadius={18}
           >
             Easy Difficulty
           </Button>
           <Button
-            style={{
-              fontSize: 30,
-              backgroundColor: 'white',
-              minWidth: 'min-content',
-              margin: '5px',
-              paddingLeft: 20,
-              paddingRight: 20,
-              height: 56,
-              borderRadius: 18,
-            }}
+            fontSize={30}
+            backgroundColor="white"
+            color="#245463"
+            minWidth="min-content"
+            margin="5px"
+            paddingLeft={20}
+            paddingRight={20}
+            height={56}
+            borderRadius={18}
+            border="2px solid #245463"
           >
             Cuisine
           </Button>
