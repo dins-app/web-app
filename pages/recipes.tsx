@@ -14,7 +14,7 @@ export default class Recipes extends React.Component<Props> {
 
   public render(): JSX.Element {
     return (
-      <PageGrid gap={20} padding={40}>
+      <PageGrid padding={40}>
         <Box
           absolute
           top={0}
@@ -46,7 +46,7 @@ export default class Recipes extends React.Component<Props> {
             Login
           </Link>
         </Grid>
-        <Flex flexWrap="wrap" alignItems="center" margin="20px 0px 0px 0px">
+        <Flex flexWrap="wrap" alignItems="center" marginTop="40px" marginBottom="20px" class="button_container">
           <Button
             fontSize={30}
             backgroundColor="#245463"
@@ -217,7 +217,12 @@ const PageGrid = styled(Grid)`
       justify-self: end;
     }
     .logo_grid b {
-      padding-bottom: 20px;
+    }
+    .poster_box {
+      height: 240px !important;
+    }
+    .button_container {
+      margin-top: 80px !important;
     }
   }
 `;
