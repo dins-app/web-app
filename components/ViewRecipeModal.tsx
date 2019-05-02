@@ -39,11 +39,7 @@ const ViewRecipeModal: NextStatelessComponent<Props> = (props: Props): JSX.Eleme
       <Picture>
         <source srcSet={(props.hasOwnProperty('images') && props.images.webp) || ''} type="image/webp" />
         <source srcSet={(props.hasOwnProperty('images') && props.images.jpg) || ''} type="image/jpeg" />
-        <Image
-          src={(props.hasOwnProperty('images') && props.images.jpg) || ''}
-          alt={props.name.toLowerCase()}
-          objectFit="contain"
-        />
+        <Image src={(props.hasOwnProperty('images') && props.images.jpg) || ''} alt={props.name.toLowerCase()} />
       </Picture>
     </Grid>
   </Grid>
@@ -74,7 +70,13 @@ const Picture = styled.picture`
   z-index: -1;
   img {
     width: 100%;
-    max-height: 60vh;
+    height: 100%;
+    max-height: 100%;
+    max-width: 100%;
+    object-fit: contain;
   }
-  margin: 30px;
+  width: 100%;
+  max-height: calc(50vh + 20px);
+  margin: 30px 20px 0 20px;
+  clip-path: inset(4px);
 `;
