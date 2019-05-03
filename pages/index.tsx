@@ -73,6 +73,7 @@ class IndexPage extends React.Component<Props, State> {
               width="100%"
               height="100%"
               objectFit="stretch"
+              onClick={(): void => this.props.router.push('/')}
             />
           </picture>
         </Box>
@@ -244,6 +245,12 @@ const PageGrid = styled(Grid)`
       h2 {
         font-size: 30px !important;
       }
+    }
+  }
+
+  .logo > img {
+    :hover {
+      cursor: pointer;
     }
   }
 `;

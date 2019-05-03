@@ -30,7 +30,12 @@ export default class Recipes extends React.Component<Props> {
           <picture className="logo" gridArea="a" paddingBottom="37px">
             <source srcSet={require('../static/img/logo.png?webp')} type="image/webp" />
             <source srcSet={require('../static/img/logo.png')} type="image/jpeg" />
-            <Image src={require('../static/img/logo.png')} alt="logo" width={200} />
+            <Image
+              src={require('../static/img/logo.png')}
+              alt="logo"
+              width={200}
+              onClick={(): void => this.props.router.push('/')}
+            />
           </picture>
           {/* Login Link */}
           <Link
@@ -46,7 +51,7 @@ export default class Recipes extends React.Component<Props> {
             Login
           </Link>
         </Grid>
-        <Flex flexWrap="wrap" alignItems="center" marginTop="40px" marginBottom="20px" class="button_container">
+        <Flex flexWrap="wrap" alignItems="center" marginTop="40px" marginBottom="20px" className="button_container">
           <Button
             fontSize={30}
             backgroundColor="#245463"
@@ -223,6 +228,12 @@ const PageGrid = styled(Grid)`
     }
     .button_container {
       margin-top: 80px !important;
+    }
+  }
+
+  .logo > img {
+    :hover {
+      cursor: pointer;
     }
   }
 `;
