@@ -42,7 +42,7 @@ const RecipePreviewTile: NextStatelessComponent<Props> = (props: Props): JSX.Ele
           </Heading>
         </Tile>
         <Backdrop use={[Portal, Overlay.Hide]} {...overlay} />
-        <Overlay use={Portal} {...overlay}>
+        <Overlay use={Portal} {...overlay} padding={0} display="relative">
           <ViewRecipeModal overlay={overlay} {...props} />
         </Overlay>
       </>

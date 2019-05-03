@@ -106,7 +106,7 @@ export default class MyDocument extends Document<Props> {
 
           {/* FONTS */}
           {/* <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet"></link> */}
-          <link href="https://fonts.googleapis.com/css?family=Nunito:300,600,700,900" rel="stylesheet" />
+          <link href="https://fonts.googleapis.com/css?family=Nunito:300,400,600,700,900" rel="stylesheet" />
 
           {/* Apple PWA fix */}
           <script
