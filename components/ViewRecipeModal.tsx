@@ -1,4 +1,4 @@
-import { styled, Grid, Heading, Paragraph, Image, List } from 'reakit';
+import { styled, Grid, Heading, Paragraph, Image, List, Box, Group, Button } from 'reakit';
 import { NextStatelessComponent } from 'next';
 import React from 'react';
 
@@ -70,6 +70,35 @@ const ViewRecipeModal: NextStatelessComponent<Props> = (props: Props): JSX.Eleme
           single layer on 2 large baking sheets. Bake until crisp, about 30 minutes for flat leaves and up to 33 minutes
           for wrinkled leaves. Transfer leaves to rack to cool.
         </Paragraph>
+      </Grid>
+      <Grid padding="20px 0" gap={20} borderBottom="1.3px solid rgba(151, 151, 151, 0.8)" margin="0 calc(-1em - 20px)">
+        <Heading use="h4" fontWeight={600} color="#4a4a4a" margin="0 calc(1em + 14px)">
+          Reviews
+        </Heading>
+        <Box margin="0 calc(1em + 20px)">
+          <Paragraph color="#4a4a4a" fontWeight={600} fontSize={20} marginBottom={5}>
+            Score: 3 out of 4 - HREVILLA FROM TAKOMA PARK, MD
+          </Paragraph>
+          <Paragraph color="#4a4a4a" fontWeight={400} fontSize={20}>
+            Preheat oven to 250°F. Toss kale with oil in large bowl. Sprinkle with salt and pepper. Arrange leaves in
+            single layer on 2 large baking sheets. Bake until crisp, about 30 minutes for flat leaves and up to 33
+            minutes for wrinkled leaves. Transfer leaves to rack to cool.
+          </Paragraph>
+        </Box>
+        <Box margin="0 calc(1em + 20px)">
+          <Paragraph color="#4a4a4a" fontWeight={600} fontSize={20} marginBottom={5}>
+            Score: 1 out of 4 - KATYAT FROM MARYLAND
+          </Paragraph>
+          <Paragraph color="#4a4a4a" fontWeight={400} fontSize={20}>
+            Schmeh. Like salty desiccated garnish.
+          </Paragraph>
+        </Box>
+      </Grid>
+      <Grid padding="20px 0" templateColumns="1fr 1fr" margin={0}>
+        <Button width="min-content">Add to My List</Button>
+        <Button width="min-content" justifySelf="end">
+          Print
+        </Button>
       </Grid>
     </Grid>
   </>
